@@ -1,0 +1,74 @@
+/* src/Styles/ImageCarousel.css */
+
+.textstuff {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  text-align: center;
+  max-width: 400px; /* Increased width for better balance */
+  margin: 0 auto;
+  /* Center in the middle of the page */
+  padding-bottom: 20px; /* Space below the text */
+}
+
+.textstuff p {
+  font-size: 1rem;
+  font-weight: 250;
+  color: #555;
+  line-height: 1.5;
+}
+
+.carousel-container {
+  position: relative;
+  width: 80%;
+  max-width: 400px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #ffffff;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.carousel-button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.carousel-button:first-of-type {
+  left: 10px;
+}
+
+.carousel-button:last-of-type {
+  right: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .carousel-container {
+    width: 95%;
+  }
+
+  .carousel-button {
+    padding: 8px 12px;
+    font-size: 1.2rem;
+  }
+}

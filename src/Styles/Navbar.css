@@ -1,0 +1,39 @@
+.topnav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: #f5f5f5;
+  padding: 30px 200px 20px 20px; /* Increased right and left padding */
+  position: sticky;
+  top: 0;
+  width: 100%;
+  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+  z-index: 1000;
+  box-sizing: border-box;
+}
+.topnav a {
+  color: #000; /* Dark text for contrast */
+  text-decoration: none;
+  padding: 0 13px;
+  font-size: 15px;
+  font-weight: 300;
+  font-family: "Jaro", sans-serif; /* Consistent font */
+  /* transition: color 0.3s ease; */
+}
+
+.topnav a:hover {
+  font-weight: 700;
+  color: #5b8b8c; /* Darker on hover */
+}
+
+.topnav a.active {
+  font-weight: 700;
+  color: #000000; /* Bold and black for the active page */
+}
+
+/* Responsive Navbar */
+@media (max-width: 768px) {
+  .topnav {
+    padding: 10px 10px;
+  }
+}

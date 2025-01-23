@@ -1,0 +1,35 @@
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 50px 0 50px 0px;
+  background-color: #f5f5f5;
+}
+
+.line {
+  flex-grow: 1;
+  height: 1px;
+  background-color: #000;
+  border: none;
+}
+
+.divider-text {
+  padding: 0 15px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #5b8b8c;
+  font-family: "Jaro", sans-serif;
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  justify-content: center;
+}
+
+/* Optional: Adjust for small screens */
+@media (max-width: 768px) {
+  .divider-text {
+    font-size: 0.9rem;
+    padding: 0 10px;
+  }
+}
