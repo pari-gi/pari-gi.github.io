@@ -1,33 +1,36 @@
 /* ---------- hero ---------- */
 .hero {
   position: relative;
-  height: 730px;
+  height: 560px;
   margin-top: 8px;
+  /* full-bleed: the hero escapes the 1200px column and spans the viewport */
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
 }
 .hero-star {
   position: absolute;
-  left: 0;
-  top: 0;
-  width: 45%;
-  max-width: 681px;
+  left: 9%;
+  top: 28px;
+  width: 30%;
+  max-width: 454px;
 }
 .hero-headshot {
   position: absolute;
-  left: 18.7%;
-  top: 138px;
-  width: 19.6%;
-  max-width: 297px;
+  left: 21.5%;
+  top: 118px;
+  width: 13.1%;
+  max-width: 198px;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
 }
 .hero-intro {
   position: absolute;
-  right: 9.3%;
-  top: 237px;
+  right: calc(9.3% + 145px);
+  top: 177px;
   width: 52%;
   max-width: 775px;
   text-align: right;
   color: var(--brown);
-  font-size: 27px;
+  font-size: 21.6px;
   line-height: 1.72;
 }
 .hero-intro-bold {
@@ -35,20 +38,23 @@
 }
 .hero-bracket {
   position: absolute;
-  right: 5.7%;
-  top: 193px;
-  height: 345px;
+  right: calc(9.3% + 94px);
+  top: 163px;
+  height: 230px;
 }
 
 /* ---------- statement + filters ---------- */
 .statement-block {
+  position: relative;
+  z-index: 4;
+  background: var(--paper);
   padding: 0 7.3%;
-  margin-top: 60px;
+  margin-top: 10px;
 }
 .statement {
   font-family: var(--font-sans);
   font-weight: 400;
-  font-size: clamp(26px, 3vw, 46px);
+  font-size: clamp(20px, 2.3vw, 35px);
   line-height: 1.32;
   color: var(--brown);
   max-width: 1322px;
@@ -59,30 +65,39 @@
 .filters {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
-  margin-top: 45px;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-top: 22px;
+}
+.filters .chip {
+  padding: 5px 13px;
 }
 
 /* ---------- project cards ---------- */
 .projects {
   padding: 0 6.5%;
-  margin-top: 200px;
+  margin-top: 230px;
+  margin-bottom: 280px;
   display: flex;
   flex-direction: column;
-  gap: 81px;
+  gap: 210px;
 }
 .project-card {
   position: relative;
   display: block;
-  height: 421px;
+  height: 370px;
 }
+/* earlier content stays on top: a rising laptop slides behind the card above it */
+.project-card:nth-child(1) { z-index: 3; }
+.project-card:nth-child(2) { z-index: 2; }
+.project-card:nth-child(3) { z-index: 1; }
 .card-img {
   position: absolute;
   left: 50%;
   top: 0;
   transform: translateX(-50%);
-  width: 50%;
-  max-width: 658px;
+  width: 44%;
+  max-width: 580px;
   z-index: 0;
   opacity: 0.5;
   filter: grayscale(35%);
@@ -90,7 +105,7 @@
 }
 .card-img--framed {
   top: 12px;
-  width: 44%;
+  width: 39%;
   border-radius: 10px 10px 0 0;
   box-shadow: 0 -2px 18px rgba(0, 0, 0, 0.15);
 }
@@ -99,12 +114,12 @@
   left: 0;
   bottom: 0;
   width: 100%;
-  height: 320px;
+  height: 280px;
   background: var(--brown);
   border-radius: 22px;
   z-index: 1;
   color: var(--paper);
-  padding: 50px 33px 28px;
+  padding: 42px 30px 24px;
   transition: background 0.35s ease;
 }
 .card-rule {
@@ -117,24 +132,24 @@
 .card-title {
   font-family: var(--font-sans);
   font-weight: 300;
-  font-size: 42px;
+  font-size: 30px;
   line-height: 1.3;
-  max-width: 845px;
+  max-width: 55%;
   text-transform: uppercase;
 }
 .card-highlights {
   position: absolute;
-  top: 61px;
-  right: 36px;
-  width: 339px;
+  top: 54px;
+  right: 32px;
+  width: 310px;
   text-align: right;
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1.5;
 }
 .card-meta {
   position: absolute;
-  left: 33px;
-  bottom: 28px;
+  left: 30px;
+  bottom: 24px;
   display: flex;
   align-items: center;
   gap: 27px;
@@ -142,7 +157,7 @@
 .card-name {
   font-family: var(--font-sans);
   font-weight: 400;
-  font-size: 27px;
+  font-size: 24px;
   text-transform: uppercase;
 }
 .card-read {
@@ -160,7 +175,7 @@
 .project-card:hover .card-img {
   opacity: 1;
   filter: none;
-  transform: translateX(-50%) translateY(-235px) scale(1.12);
+  transform: translateX(-50%) translateY(-190px) scale(1.12);
 }
 
 /* stickers */
@@ -184,12 +199,13 @@
   transition: opacity 0.3s ease, transform 0.35s ease;
   white-space: nowrap;
 }
-.card-sticker--1 { --rot: -12deg; left: 10%; top: 60px; transition-delay: 0.05s; }
-.card-sticker--2 { --rot: -9deg;  left: 4%;  top: 175px; transition-delay: 0.12s; }
-.card-sticker--3 { --rot: -6deg;  left: 6%;  top: 290px; transition-delay: 0.2s; }
-.card-sticker--4 { --rot: 8deg;   right: 8%; top: 75px; transition-delay: 0.08s; }
-.card-sticker--5 { --rot: 10deg;  right: 4%; top: 190px; transition-delay: 0.16s; }
-.card-sticker--6 { --rot: 12deg;  right: 7%; top: 305px; transition-delay: 0.24s; }
+/* all slots stay fully in the white space above the card panel */
+.card-sticker--1 { --rot: -12deg; left: 10%; top: 25px; transition-delay: 0.05s; }
+.card-sticker--2 { --rot: -9deg;  left: 4%;  top: 95px; transition-delay: 0.12s; }
+.card-sticker--3 { --rot: -6deg;  left: 6%;  top: 160px; transition-delay: 0.2s; }
+.card-sticker--4 { --rot: 8deg;   right: 8%; top: 40px; transition-delay: 0.08s; }
+.card-sticker--5 { --rot: 10deg;  right: 4%; top: 105px; transition-delay: 0.16s; }
+.card-sticker--6 { --rot: 12deg;  right: 7%; top: 150px; transition-delay: 0.24s; }
 .project-card:hover .card-sticker {
   opacity: 1;
   transform: translateY(0) rotate(var(--rot, 0deg));

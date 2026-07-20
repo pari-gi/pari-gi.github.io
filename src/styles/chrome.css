@@ -1,8 +1,11 @@
 /* ---------- page shell ---------- */
 .page {
+  overflow-x: clip;
+}
+/* header spans the full viewport; page content and footer sit in the centered column */
+.page > main {
   max-width: var(--page-max);
   margin: 0 auto;
-  overflow-x: clip;
 }
 
 /* ---------- icons ---------- */
@@ -20,11 +23,11 @@
 .chip {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 7px;
   border-radius: 999px;
-  border: 1px solid rgba(56, 38, 23, 0.35);
-  background: var(--paper);
-  color: var(--brown);
+  border: 1.75px solid #ececec;
+  background: transparent;
+  color: var(--gray);
   font-family: var(--font-serif);
   white-space: nowrap;
   transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease;
@@ -34,11 +37,12 @@
 }
 .chip--sm {
   font-size: 17px;
-  padding: 4px 12px;
+  padding: 3px 10px;
 }
 .chip--md {
   font-size: 20px;
-  padding: 6px 14px;
+  padding: 4px 12px;
+  border-width: 2px;
 }
 .chip--active {
   background: var(--olive);
@@ -54,6 +58,7 @@
   width: 87%;
   max-width: 1315px;
   display: block;
+  margin: 0 auto;
 }
 .site-nav {
   display: flex;
@@ -67,8 +72,9 @@
 .site-footer {
   position: relative;
   background: var(--paper-alt);
-  padding: 37px 38px 31px;
-  margin-top: 120px;
+  /* full-bleed background, content inset 150px from the page edges */
+  padding: 37px 150px 31px;
+  margin: 120px 0 0;
   overflow: hidden;
 }
 .footer-chips {
@@ -83,18 +89,18 @@
   flex-wrap: wrap;
 }
 .footer-bottom {
-  margin-top: 145px;
+  margin-top: 160px;
 }
 .footer-wordmark {
-  width: 82.6%;
+  width: 82.5%;
   max-width: 1251px;
   display: block;
 }
 .footer-bird {
   position: absolute;
-  right: 26px;
-  bottom: 160px;
-  width: 207px;
+  right: 150px;
+  bottom: 40px;
+  width: 150px;
 }
 
 @media (max-width: 900px) {

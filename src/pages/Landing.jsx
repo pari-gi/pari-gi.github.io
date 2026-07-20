@@ -69,7 +69,7 @@ export default function Landing() {
               key={f.label}
               icon={f.icon}
               label={f.label}
-              size="md"
+              size="sm"
               active={filter === f.label}
               onClick={() => setFilter(f.label)}
             />
