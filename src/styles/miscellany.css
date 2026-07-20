@@ -1,0 +1,44 @@
+.misc-canvas {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1514 / 2028;
+}
+
+.misc-photo {
+  position: absolute;
+  overflow: hidden;
+  transition: transform 0.25s ease;
+}
+.misc-photo--circle {
+  border-radius: 50%;
+}
+.misc-photo img {
+  position: absolute;
+  object-fit: cover;
+  max-width: none;
+}
+.misc-photo:hover {
+  transform: scale(1.04);
+}
+
+.misc-title {
+  position: absolute;
+  font-family: var(--font-sans);
+  font-weight: 900;
+  font-size: clamp(40px, 6.34vw, 96px);
+  line-height: 1.1;
+  color: var(--olive);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.misc-caption,
+.misc-list {
+  position: absolute;
+  color: var(--brown);
+  font-size: clamp(16px, 2.11vw, 32px);
+  line-height: 1.19;
+}
+.misc-list {
+  width: 28%;
+}
