@@ -2,9 +2,19 @@ import { useState } from 'react'
 import applenj from '../data/case-applenj.js'
 import pits from '../data/case-pits.js'
 import hungie from '../data/case-hungie.js'
+import RICH from '../data/rich-text.js'
 import '../styles/case.css'
 
 const CASES = { applenj, pits, hungie }
+
+// Looks up the Figma-extracted emphasis runs for a passage and renders them.
+const richKey = (t) => t.toLowerCase().replace(/[^a-z0-9]+/g, '')
+function Rich({ text }) {
+  if (!text) return null
+  const marked = RICH[richKey(text)] || text
+  const parts = marked.split('**')
+  return <>{parts.map((p, i) => (i % 2 ? <strong key={i}>{p}</strong> : p))}</>
+}
 
 function Row({ row }) {
   if (row.pair) {
@@ -13,7 +23,7 @@ function Row({ row }) {
         {row.pair.map((col, i) => (
           <div key={i} className="case-pair-col">
             {col.eyebrow && <p className="case-eyebrow">{col.eyebrow}</p>}
-            {col.body && <p className="case-body">{col.body}</p>}
+            {col.body && <p className="case-body"><Rich text={col.body} /></p>}
             {col.image && <img src={col.image} alt={col.eyebrow || ''} />}
           </div>
         ))}
@@ -22,12 +32,12 @@ function Row({ row }) {
   }
   return (
     <div className="case-row">
+      {row.eyebrow && <p className="case-eyebrow">{row.eyebrow}</p>}
       <div className="case-row-left">
-        {row.eyebrow && <p className="case-eyebrow">{row.eyebrow}</p>}
-        {row.statement && <p className="case-statement">{row.statement}</p>}
+        {row.statement && <p className="case-statement"><Rich text={row.statement} /></p>}
       </div>
       <div className="case-row-right">
-        {row.body && <p className="case-body">{row.body}</p>}
+        {row.body && <p className="case-body"><Rich text={row.body} /></p>}
       </div>
       {row.images && (
         <div className="case-images">
@@ -56,7 +66,7 @@ function OverviewGrid({ section }) {
                 </p>
               ))
             ) : (
-              <p className="case-body">{row.body}</p>
+              <p className="case-body"><Rich text={row.body} /></p>
             )}
           </div>
         ))}
@@ -80,7 +90,7 @@ function Section({ section, num, open, onToggle }) {
           ) : (
             <>
               {section.heading && <h3 className="case-heading">{section.heading}</h3>}
-              {section.intro && <p className="case-intro">{section.intro}</p>}
+              {section.intro && <p className="case-intro"><Rich text={section.intro} /></p>}
               {section.rows.map((row, i) => (
                 <Row key={i} row={row} />
               ))}

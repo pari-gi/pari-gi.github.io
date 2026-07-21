@@ -1,7 +1,23 @@
 .misc-canvas {
   position: relative;
-  width: 100%;
+  /* 1.25x the column width, centered, so the whole collage scales up together */
+  width: 125%;
+  margin-left: -12.5%;
   aspect-ratio: 1514 / 2028;
+  /* the collage's own top whitespace puts the first photos ~332px down;
+     pull it up so they start 100px below the nav */
+  margin-top: -232px;
+  /* likewise trim the frame's built-in bottom whitespace: last photo → footer = 175px */
+  margin-bottom: -242px;
+}
+
+@media (max-width: 900px) {
+  .misc-canvas {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
 }
 
 .misc-photo {
@@ -25,7 +41,7 @@
   position: absolute;
   font-family: var(--font-sans);
   font-weight: 900;
-  font-size: clamp(30px, 6.3vw, 60px);
+  font-size: clamp(37px, 7.9vw, 75px);
   line-height: 1.1;
   color: var(--olive);
   text-transform: uppercase;
@@ -36,7 +52,7 @@
 .misc-list {
   position: absolute;
   color: var(--brown);
-  font-size: clamp(13px, 2.11vw, 20px);
+  font-size: clamp(16px, 2.6vw, 25px);
   line-height: 1.19;
 }
 .misc-list {
