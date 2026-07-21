@@ -1,0 +1,422 @@
+@import url('https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:ital,wght@0,300;0,400;1,300;1,400&family=Inclusive+Sans:ital,wght@0,400;0,600;0,700&family=Roboto+Mono:wght@400;500&display=swap');
+/* SANDBOX COPY of case.css — case-* classes prefixed lab-. Safe to edit freely. */
+/* ---------- hero ---------- */
+.lab-case-hero {
+  position: relative;
+  background: var(--paper-alt);
+  padding: 28px 0 0;
+  border-top: 1px solid #d9d9d9;
+}
+.lab-case-role {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--gray);
+  padding: 0 5.4%;
+}
+.lab-case-hero-inner {
+  display: flex;
+  align-items: flex-start;
+  gap: 3%;
+  padding: 16px 0 0 5.4%;
+  min-height: 340px;
+}
+.lab-case-title {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: clamp(36px, 5.3vw, 50px);
+  color: var(--gray);
+  flex: 0 0 27%;
+}
+.lab-case-highlights {
+  color: var(--gray);
+  font-size: 17px;
+  line-height: 1.35;
+  text-align: right;
+  flex: 0 0 18.5%;
+  padding-top: 14px;
+}
+.lab-case-hero-img {
+  width: 52.7%;
+  align-self: flex-end;
+  margin-left: auto;
+}
+.lab-case-scroll {
+  border-top: 1px solid #d9d9d9;
+  color: var(--gray);
+  font-size: 14px;
+  padding: 8px 5.4% 20px;
+}
+
+/* ---------- sections ---------- */
+.lab-case-sections {
+  position: relative;
+  padding: 60px 0 40px;
+}
+.lab-case-sections::before {
+  content: '';
+  position: absolute;
+  left: 80px;
+  top: 90px;
+  bottom: 40px;
+  border-left: 1px solid #c9c9c9;
+}
+.lab-case-section {
+  position: relative;
+  padding: 0;
+}
+.lab-case-section + .lab-case-section {
+  margin-top: 60px;
+}
+.lab-case-section-head {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  max-width: 1285px;
+  text-align: left;
+  padding: 0 0 0 63px;
+}
+.lab-case-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--olive);
+  color: var(--cream);
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 20px;
+  position: relative;
+  z-index: 1;
+}
+/* style guide: "Section" — Times italic 20px */
+.lab-case-section-title {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 20px;
+  color: var(--ink);
+}
+.lab-case-chevron {
+  margin-left: auto;
+  font-family: var(--font-sans);
+  font-size: 24px;
+  color: var(--gray);
+}
+.lab-case-section-head:hover .lab-case-section-title {
+  color: var(--olive);
+}
+
+/* case pages escape the global column; spacing is set from the page edge */
+.page > main.lab-case {
+  max-width: none;
+  margin: 0;
+}
+
+/* ---------- full-height sidebar nav ---------- */
+.lab-case-shell {
+  display: flex;
+  align-items: stretch;
+}
+.lab-case-nav {
+  flex: 0 0 180px;
+  width: 180px;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+.lab-case-nav-inner {
+  position: sticky;
+  top: 0;
+  padding: 30px 22px 40px;
+  text-align: left;
+}
+.lab-case-nav-name {
+  font-family: 'Inclusive Sans', system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #ffffff;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+}
+.lab-case-nav-home {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 22px;
+  padding: 7px 13px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.12);
+  font-family: 'Inclusive Sans', system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #ffffff;
+  transition: background 0.2s ease;
+}
+.lab-case-nav-home:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+.lab-case-nav-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  margin-top: 30px;
+}
+.lab-case-nav-item {
+  font-family: 'Inclusive Sans', system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+.lab-case-nav-item:hover {
+  color: rgba(255, 255, 255, 0.9);
+}
+.lab-case-nav-item.is-active {
+  color: var(--olive);
+}
+
+.lab-case-main {
+  flex: 1;
+  min-width: 0;
+}
+.lab-case-content {
+  padding: 70px 6% 90px;
+  max-width: 1160px;
+  margin: 0 auto;
+}
+/* divider line marking where the next section begins */
+.lab-case-content .lab-case-section + .lab-case-section {
+  margin-top: 80px;
+  padding-top: 80px;
+  border-top: 1px solid #e4e4e4;
+}
+.lab-case-section-label {
+  font-family: 'Inclusive Sans', system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #b8b8b8;
+  margin-bottom: 26px;
+}
+
+.lab-case-section-body {
+  max-width: 935px;
+  padding: 0;
+}
+.lab-case-section-body > * + * {
+  margin-top: 90px;
+}
+.lab-case-heading + * {
+  margin-top: 45px;
+}
+.lab-case-heading + .lab-case-intro {
+  margin-top: 15px;
+}
+/* style guide: "Title" — Outfit 700 caps (1.2x smaller) */
+.lab-case-heading {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 29.2px;
+  line-height: 1.25;
+  text-transform: uppercase;
+  color: var(--gray-dark);
+  white-space: pre-line;
+}
+/* subheading — Averia Serif Libre italic; grey = ambient, dark = emphasized */
+.lab-case-intro {
+  font-family: 'Averia Serif Libre', Georgia, serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 28px;
+  letter-spacing: -1.5px;
+  line-height: 1.2;
+  color: #929290;
+  white-space: pre-line;
+}
+.lab-case-intro strong {
+  font-weight: 400;
+  color: #101010;
+}
+
+/* rows: header spans the top, 40px above the two top-aligned columns */
+.lab-case-row {
+  display: grid;
+  grid-template-columns: 360px 525px;
+  column-gap: 50px;
+  row-gap: 0;
+  justify-content: start;
+}
+.lab-case-row > .lab-case-eyebrow {
+  grid-column: 1 / -1;
+  margin-bottom: 24px;
+}
+.lab-case-row-left {
+  min-width: 0;
+}
+/* header — Inclusive Sans 600 caps */
+.lab-case-eyebrow {
+  font-family: 'Inclusive Sans', system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 0.01em;
+  line-height: 1.6em;
+  text-transform: uppercase;
+  color: #474747;
+}
+/* left column subheading — Averia Serif Libre italic; grey = ambient, dark = emphasized */
+.lab-case-statement {
+  font-family: 'Averia Serif Libre', Georgia, serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 28px;
+  letter-spacing: -1.5px;
+  line-height: 1.2;
+  color: #929290;
+  white-space: pre-line;
+}
+.lab-case-statement strong {
+  font-weight: 400;
+  color: #101010;
+}
+/* right column body — Inclusive Sans; bold labels carry emphasis, colour unchanged */
+.lab-case-body {
+  font-family: 'Inclusive Sans', system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: 1.4;
+  color: #7a7a7a;
+  white-space: pre-line;
+}
+.lab-case-body strong {
+  font-weight: 700;
+  color: inherit;
+}
+.lab-case-row-right {
+  min-width: 0;
+}
+.lab-case-images {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3%;
+  row-gap: 24px;
+  align-items: flex-start;
+  margin-top: 40px;
+}
+.lab-case-images img {
+  border: 1px solid #ececec;
+}
+
+/* paired columns (iterations) */
+.lab-case-row--pair {
+  grid-template-columns: 1fr 1fr;
+}
+.lab-case-pair-col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.lab-case-pair-col img {
+  border: 1px solid #ececec;
+}
+
+/* overview heading: Title weight/size but keeps its typed casing */
+.lab-case-overview-heading {
+  text-transform: none;
+  max-width: 520px;
+}
+.lab-case-overview-panels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  margin-top: 40px;
+}
+.lab-case-panel {
+  background: var(--paper-alt);
+  padding: 30px 26px;
+}
+.lab-case-panel-title {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 21.7px;
+  margin-bottom: 16px;
+}
+.lab-case-panel-item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 14px;
+}
+.lab-case-panel-item strong {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--gray);
+}
+.lab-case-panel-item span {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  color: var(--gray-light);
+}
+.lab-case-panel .lab-case-body {
+  color: var(--gray-light);
+}
+
+@media (max-width: 900px) {
+  .lab-case-hero-inner {
+    flex-wrap: wrap;
+  }
+  .lab-case-title {
+    flex-basis: 100%;
+  }
+  .lab-case-highlights {
+    flex-basis: 100%;
+    text-align: left;
+    padding: 0 5.4%;
+  }
+  .lab-case-hero-img {
+    width: 90%;
+    margin: 20px auto 0;
+  }
+  .lab-case-row,
+  .lab-case-row--pair,
+  .lab-case-overview-panels {
+    grid-template-columns: 1fr;
+  }
+  .lab-case-shell {
+    flex-direction: column;
+  }
+  .lab-case-nav {
+    width: 100%;
+    flex-basis: auto;
+    border-right: none;
+    border-bottom: 1px solid #e4e4e4;
+  }
+  .lab-case-nav-inner {
+    position: static;
+    padding: 24px 5.4%;
+  }
+  .lab-case-content {
+    padding: 30px 5.4% 60px;
+  }
+  .lab-case-section-body {
+    padding: 0;
+  }
+}

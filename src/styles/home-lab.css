@@ -1,0 +1,417 @@
+@import url('https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:ital,wght@0,400;0,700;1,400;1,700&family=Roboto+Mono:wght@400;500&display=swap');
+/* SANDBOX COPY of landing.css — all classes prefixed lab-. Safe to edit freely. */
+
+/* ---------- sandbox header: white wordmark + mono nav ---------- */
+.lab-field-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 15px 19px 0;
+  z-index: 5;
+}
+.lab-field-wordmark {
+  width: 87%;
+  max-width: 1315px;
+  margin: 0 auto;
+  display: block;
+  /* recolour the olive wordmark SVG to white */
+  filter: brightness(0) invert(1);
+}
+.lab-field-nav {
+  display: flex;
+  justify-content: flex-end;
+  gap: 42px;
+  margin-top: 22px;
+  padding-right: 90px;
+}
+.lab-field-nav a {
+  font-family: 'Roboto Mono', ui-monospace, monospace;
+  font-size: 16px;
+  letter-spacing: 0.06em;
+  color: #ffffff;
+  transition: opacity 0.2s ease;
+}
+.lab-field-nav a:hover {
+  opacity: 0.65;
+}
+
+/* ---------- ASCII grassland hero ---------- */
+.lab-field {
+  position: relative;
+  /* full-bleed olive field, a long 3000px scroll */
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  height: 3000px;
+  margin-top: -8px;
+  background: #717b08;
+  overflow: hidden;
+}
+.lab-field-critter,
+.lab-field-bird,
+.lab-field-flower {
+  position: absolute;
+  margin: 0;
+  font-family: ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  font-size: 15px;
+  line-height: 1.3;
+  white-space: pre;
+  user-select: none;
+  pointer-events: none;
+}
+/* flowers: bright bloom (inline colour) over a dark-green stem, swaying in the wind */
+.lab-field-flower {
+  line-height: 1.15;
+  transform-origin: bottom center;
+  animation: lab-sway ease-in-out infinite;
+  will-change: transform;
+}
+.lab-field-stem {
+  color: #26340a;
+}
+@keyframes lab-sway {
+  0%, 100% { transform: rotate(-3.5deg); }
+  50% { transform: rotate(3.5deg); }
+}
+.lab-field-bird {
+  left: 0;
+  animation: lab-fly linear infinite;
+  will-change: transform;
+}
+@keyframes lab-fly {
+  from { transform: translateX(-12vw); }
+  to { transform: translateX(112vw); }
+}
+.lab-field-intro {
+  position: absolute;
+  top: 12%;
+  right: 13%;
+  width: min(88%, 700px);
+  text-align: right;
+  color: #ffffff;
+  font-family: 'Averia Serif Libre', Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 28px;
+  letter-spacing: -1.5px;
+  line-height: 1.3;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
+  z-index: 2;
+}
+.lab-field-intro p {
+  margin: 0 0 22px;
+}
+.lab-field-intro p:last-child {
+  margin-bottom: 0;
+}
+.lab-field-intro-bold {
+  font-weight: 700;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lab-field-bird,
+  .lab-field-flower { animation: none; }
+}
+@media (max-width: 700px) {
+  .lab-field-intro {
+    font-size: 18px;
+  }
+  .lab-field-critter,
+  .lab-field-bird,
+  .lab-field-flower {
+    font-size: 12px;
+  }
+}
+
+/* ---------- hero ---------- */
+.lab-hero {
+  position: relative;
+  height: 560px;
+  margin-top: 8px;
+  /* full-bleed: the hero escapes the 1200px column and spans the viewport */
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+}
+.lab-hero-star {
+  position: absolute;
+  left: 9%;
+  top: 28px;
+  width: 30%;
+  max-width: 454px;
+}
+.lab-hero-headshot {
+  position: absolute;
+  left: 21.5%;
+  top: 118px;
+  width: 13.1%;
+  max-width: 198px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+.lab-hero-intro {
+  position: absolute;
+  right: calc(9.3% + 145px);
+  top: 177px;
+  width: 52%;
+  max-width: 775px;
+  text-align: right;
+  color: var(--brown);
+  font-size: 21.6px;
+  line-height: 1.72;
+}
+.lab-hero-intro-bold {
+  font-weight: 700;
+}
+.lab-hero-bracket {
+  position: absolute;
+  right: calc(9.3% + 94px);
+  top: 163px;
+  height: 230px;
+}
+
+/* ---------- statement + filters ---------- */
+.lab-statement-block {
+  position: relative;
+  z-index: 4;
+  background: var(--paper);
+  padding: 0 7.3%;
+  margin-top: 10px;
+}
+.lab-statement {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: clamp(20px, 2.3vw, 35px);
+  line-height: 1.32;
+  color: var(--brown);
+  max-width: 1322px;
+}
+.lab-statement strong {
+  font-weight: 700;
+}
+.lab-filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-top: 22px;
+}
+.lab-filters .chip {
+  padding: 5px 13px;
+}
+
+/* ---------- project cards ---------- */
+.lab-projects {
+  padding: 0 6.5%;
+  margin-top: 230px;
+  margin-bottom: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 210px;
+}
+.lab-project-card {
+  position: relative;
+  display: block;
+  height: 370px;
+}
+/* earlier content stays on top: a rising laptop slides behind the card above it */
+.lab-project-card:nth-child(1) { z-index: 3; }
+.lab-project-card:nth-child(2) { z-index: 2; }
+.lab-project-card:nth-child(3) { z-index: 1; }
+.lab-card-img {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: 44%;
+  max-width: 580px;
+  z-index: 0;
+  opacity: 0.5;
+  filter: grayscale(35%);
+  transition: transform 0.4s cubic-bezier(0.22, 0.9, 0.35, 1), opacity 0.3s ease, filter 0.3s ease;
+}
+.lab-card-img--framed {
+  top: 12px;
+  width: 39%;
+  border-radius: 10px 10px 0 0;
+  box-shadow: 0 -2px 18px rgba(0, 0, 0, 0.15);
+}
+.lab-card-panel {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 280px;
+  background: var(--brown);
+  border-radius: 22px;
+  z-index: 1;
+  color: var(--paper);
+  padding: 42px 30px 24px;
+  transition: background 0.35s ease;
+}
+.lab-card-rule {
+  position: absolute;
+  top: -17px;
+  left: 29px;
+  width: 124px;
+  border-top: 1px solid var(--paper);
+}
+.lab-card-title {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: 30px;
+  line-height: 1.3;
+  max-width: 55%;
+  text-transform: uppercase;
+}
+.lab-card-highlights {
+  position: absolute;
+  top: 54px;
+  right: 32px;
+  width: 310px;
+  text-align: right;
+  font-size: 18px;
+  line-height: 1.5;
+}
+.lab-card-meta {
+  position: absolute;
+  left: 30px;
+  bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 27px;
+}
+.lab-card-name {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 24px;
+  text-transform: uppercase;
+}
+.lab-card-read {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: 13px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+}
+
+/* hover state */
+.lab-project-card:hover .lab-card-panel {
+  background: var(--olive);
+}
+.lab-project-card:hover .lab-card-img {
+  opacity: 1;
+  filter: none;
+  transform: translateX(-50%) translateY(-190px) scale(1.12);
+}
+
+/* stickers */
+.lab-card-stickers {
+  position: absolute;
+  inset: -120px 0 auto;
+  height: 420px;
+  z-index: 2;
+  pointer-events: none;
+}
+.lab-card-sticker {
+  position: absolute;
+  background: var(--olive);
+  color: var(--paper);
+  font-size: 19px;
+  padding: 5px 18px;
+  border-radius: 999px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+  opacity: 0;
+  transform: translateY(14px) rotate(var(--rot, 0deg));
+  transition: opacity 0.3s ease, transform 0.35s ease;
+  white-space: nowrap;
+}
+/* all slots stay fully in the white space above the card panel */
+.lab-card-sticker--1 { --rot: -12deg; left: 10%; top: 25px; transition-delay: 0.05s; }
+.lab-card-sticker--2 { --rot: -9deg;  left: 4%;  top: 95px; transition-delay: 0.12s; }
+.lab-card-sticker--3 { --rot: -6deg;  left: 6%;  top: 160px; transition-delay: 0.2s; }
+.lab-card-sticker--4 { --rot: 8deg;   right: 8%; top: 40px; transition-delay: 0.08s; }
+.lab-card-sticker--5 { --rot: 10deg;  right: 4%; top: 105px; transition-delay: 0.16s; }
+.lab-card-sticker--6 { --rot: 12deg;  right: 7%; top: 150px; transition-delay: 0.24s; }
+.lab-project-card:hover .lab-card-sticker {
+  opacity: 1;
+  transform: translateY(0) rotate(var(--rot, 0deg));
+}
+
+.lab-projects-empty {
+  color: var(--gray);
+  font-size: 22px;
+  text-align: center;
+  padding: 60px 0;
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 900px) {
+  .lab-hero {
+    height: auto;
+    padding-bottom: 40px;
+  }
+  .lab-hero-star {
+    width: 70%;
+    opacity: 0.6;
+  }
+  .lab-hero-headshot {
+    position: relative;
+    left: 10%;
+    top: 40px;
+    width: 45%;
+    margin-bottom: 70px;
+  }
+  .lab-hero-intro {
+    position: relative;
+    right: auto;
+    top: auto;
+    width: 88%;
+    margin: 0 auto;
+    font-size: 21px;
+  }
+  .lab-hero-bracket {
+    display: none;
+  }
+  .lab-projects {
+    margin-top: 120px;
+  }
+  .lab-project-card {
+    height: auto;
+  }
+  .lab-card-img {
+    position: relative;
+    left: 0;
+    transform: none;
+    width: 80%;
+    margin: 0 auto;
+    opacity: 1;
+    filter: none;
+  }
+  .lab-card-panel {
+    position: relative;
+    height: auto;
+    padding: 40px 24px 24px;
+  }
+  .lab-card-title {
+    font-size: 30px;
+  }
+  .lab-card-highlights {
+    position: relative;
+    top: auto;
+    right: auto;
+    width: auto;
+    text-align: left;
+    margin-top: 24px;
+  }
+  .lab-card-meta {
+    position: relative;
+    left: auto;
+    bottom: auto;
+    margin-top: 32px;
+  }
+  .lab-card-stickers {
+    display: none;
+  }
+  .lab-project-card:hover .lab-card-img {
+    transform: none;
+  }
+}
