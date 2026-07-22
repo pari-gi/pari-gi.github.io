@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inclusive+Sans:ital,wght@0,400;0,600;0,700&family=Roboto+Mono:wght@400;500&display=swap');
+
+/* ============================================================
+   NAMED TYPE SYSTEM  (emmi-inspired: Averia Serif Libre,
+   Inclusive Sans, Roboto Mono). Use these classes anywhere.
+   See /styles for the live reference chart.
+   ============================================================ */
+
+/* Display — big hero headline */
+.type-display {
+  font-family: 'Inclusive Sans', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 56px;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+}
+
+/* Title — section title, all caps */
+.type-title {
+  font-family: 'Inclusive Sans', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 1.15;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+/* Subhead — serif italic accent / pull quote */
+.type-subhead {
+  font-family: 'Averia Serif Libre', Georgia, serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 28px;
+  line-height: 1.25;
+  letter-spacing: -0.5px;
+}
+
+/* Body — running paragraph text */
+.type-body {
+  font-family: 'Inclusive Sans', system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+/* Label — small bold caps eyebrow */
+.type-label {
+  font-family: 'Inclusive Sans', system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Mono — nav / technical, monospace caps */
+.type-mono {
+  font-family: 'Roboto Mono', ui-monospace, monospace;
+  font-weight: 400;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* Caption — small muted note */
+.type-caption {
+  font-family: 'Inclusive Sans', system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #8a8a8a;
+}
+
+/* keep the non-italic styles upright regardless of inherited context */
+.type-display,
+.type-title,
+.type-body,
+.type-label,
+.type-mono,
+.type-caption {
+  font-style: normal;
+}
+
+/* ---------- style guide reference page ---------- */
+.sg {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 80px 6% 120px;
+  color: #1e1e1e;
+}
+.sg-head {
+  border-bottom: 1px solid #e4e4e4;
+  padding-bottom: 40px;
+  margin-bottom: 20px;
+}
+.sg-head .type-label {
+  color: #8a8a8a;
+}
+.sg-head .type-display {
+  margin: 10px 0 18px;
+}
+.sg-intro {
+  max-width: 560px;
+  color: #555;
+}
+.sg-row {
+  display: grid;
+  grid-template-columns: 210px 1fr;
+  gap: 40px;
+  align-items: baseline;
+  padding: 40px 0;
+  border-bottom: 1px solid #eee;
+}
+.sg-name {
+  font-family: 'Inclusive Sans', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: #1e1e1e;
+}
+.sg-spec {
+  font-family: 'Roboto Mono', ui-monospace, monospace;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #8a8a8a;
+  margin-top: 8px;
+}
+.sg-code {
+  display: inline-block;
+  margin-top: 10px;
+  font-family: 'Roboto Mono', ui-monospace, monospace;
+  font-size: 12px;
+  color: #717b08;
+  background: #f4f5ec;
+  padding: 2px 7px;
+  border-radius: 5px;
+}
+.sg-sample {
+  color: #1e1e1e;
+  margin: 0;
+}
+
+@media (max-width: 720px) {
+  .sg-row {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .type-display { font-size: 40px; }
+}

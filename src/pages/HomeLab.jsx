@@ -14,6 +14,26 @@ const FLOWER_VARIANTS = [
   { bloom: '~Y~', stem: '\\|/\n^^^^' },
   { bloom: 'U', stem: 'Y\n^^^' },
   { bloom: '@@@\n\\@/', stem: ' | \n^^^' },
+  // smaller flower types
+  { bloom: '*', stem: '|' },
+  { bloom: 'o', stem: '\\|/' },
+  { bloom: '.', stem: '\\|/' },
+  { bloom: ',,', stem: '\\|' },
+  { bloom: 'v', stem: '|\n^' },
+  { bloom: 'oo', stem: '\\|/' },
+  // more unique flowers
+  { bloom: '\\|/\n(O)\n/|\\', stem: ' | \n^^^' },   // sunflower
+  { bloom: 'V V V', stem: '\\|/\n^^^' },            // bellflowers
+  { bloom: '*\n*\n*', stem: '|\n^' },               // lavender
+  { bloom: '.*.\n*O*\n.*.', stem: ' | \n^^^' },     // star flower
+  { bloom: 'oOo\nOoO', stem: '\\|/\n^^^' },         // cluster
+  { bloom: '(@)\n \\|', stem: ' |\n^^' },           // daffodil
+  { bloom: 'o o o', stem: '\\_|_/\n ^^^' },         // blossom spray
+  { bloom: '%\n%\n%', stem: '|\n^' },               // wheat
+  { bloom: '@}', stem: '|\n^' },                    // rosebud
+  { bloom: ')O(', stem: '\\|/\n^^^' },              // poppy
+  { bloom: '\\o/', stem: ' | \n^^' },               // tulip open
+  { bloom: '*.*\n `|', stem: '|\n^' },              // sprig
 ]
 
 // animals: single bright colour, cycle in place across 3–4 frames
@@ -26,6 +46,13 @@ const ANIMALS = {
   mouse: { color: '#ff8fd0', frames: ['<:3 )~', '<:3 )~~', '<:3 )^'] },
   chick: { color: '#ffe23d', frames: [' (o<\n /|\\\n ^ ^', ' (o<\n /|\\\n ^^ ', ' (-<\n /|\\\n ^ ^'] },
   butterfly: { color: '#c15bff', frames: [' ^ ^\n(>|<)', ' ^ ^\n(<|>)'] },
+  // more little animals
+  caterpillar: { color: '#b6e34d', frames: ['o~o~o~o', '~o~o~o~', 'o~o~o~o'] },
+  ladybug: { color: '#ff3b3b', frames: ['(°..°)', '(..°°)', '(°°..)'] },
+  snail: { color: '#ff8a1f', frames: ['~(@)', '~~(@)', '~(@)'] },
+  hedgehog: { color: '#c98a54', frames: ['\\\\|//\n(o.o)', '\\\\|//\n(-.-)', '\\\\|//\n(o.o)'] },
+  bee: { color: '#ffe23d', frames: ['>|<\n(=)', '<|>\n(=)'] },
+  ant: { color: '#7d5a3a', frames: ['`o<', '´o<', '`o<'] },
 }
 const ANIMAL_KEYS = Object.keys(ANIMALS)
 
@@ -45,7 +72,7 @@ const rng = mulberry32(20260721)
 const rand = (min, max) => min + rng() * (max - min)
 const pick = (arr) => arr[Math.floor(rng() * arr.length)]
 // keep a clear zone behind the intro text (upper-right of the long page)
-const inTextZone = (top, left) => top > 7 && top < 24 && left > 38 && left < 94
+const inTextZone = (top, left) => top > 6 && top < 20 && left > 30 && left < 84
 
 function scatter(n) {
   const out = []
@@ -60,14 +87,14 @@ function scatter(n) {
   return out
 }
 
-const FLOWERS = scatter(64).map((p, i) => ({
+const FLOWERS = scatter(140).map((p, i) => ({
   ...p,
   variant: FLOWER_VARIANTS[Math.floor(rng() * FLOWER_VARIANTS.length)],
   color: pick(BRIGHTS),
   sway: (4 + rng() * 4).toFixed(2),
 }))
-const CRITTERS = scatter(30).map((p, i) => ({ ...p, kind: ANIMAL_KEYS[i % ANIMAL_KEYS.length] }))
-const BIRDS = Array.from({ length: 8 }, (_, i) => ({
+const CRITTERS = scatter(64).map((p, i) => ({ ...p, kind: ANIMAL_KEYS[i % ANIMAL_KEYS.length] }))
+const BIRDS = Array.from({ length: 12 }, (_, i) => ({
   top: rand(3, 94),
   color: pick(BRIGHTS),
   duration: (16 + rng() * 14).toFixed(1),
@@ -147,7 +174,7 @@ export default function HomeLab() {
           <p>i like adventures.</p>
           <p>i like toasty candles, hazelnut coffee, and hiking.</p>
           <p className="lab-field-intro-bold">also i am a computer science student at umd.</p>
-          <p>enjoy my portfolio. i like designing</p>
+          <p>enjoy my portfolio. i like designing.</p>
         </div>
       </section>
     </main>

@@ -7,12 +7,14 @@ import Miscellany from './pages/Miscellany.jsx'
 import CaseStudy from './pages/CaseStudy.jsx'
 import HomeLab from './pages/HomeLab.jsx'
 import AppleNjLab from './pages/AppleNjLab.jsx'
+import StyleGuide from './pages/StyleGuide.jsx'
 import './styles/chrome.css'
+import './styles/type.css'
 
 export default function App() {
   const { pathname } = useLocation()
-  // the lab home renders its own header + no footer (sandbox chrome)
-  const bareChrome = pathname === '/home-lab'
+  // these render their own chrome (no shared nav/footer)
+  const bareChrome = pathname === '/home-lab' || pathname === '/styles'
   return (
     <div className="page">
       <ScrollManager />
@@ -26,6 +28,7 @@ export default function App() {
         {/* sandbox copies — safe to redesign without touching the live pages */}
         <Route path="/home-lab" element={<HomeLab />} />
         <Route path="/applenj-lab" element={<AppleNjLab />} />
+        <Route path="/styles" element={<StyleGuide />} />
         <Route path="*" element={<Landing />} />
       </Routes>
       {!bareChrome && <Footer />}
