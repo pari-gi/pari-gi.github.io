@@ -124,59 +124,83 @@
   align-items: stretch;
 }
 .lab-case-nav {
-  flex: 0 0 180px;
-  width: 180px;
-  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  flex: 0 0 200px;
+  width: 200px;
+  border-right: 1px solid #e4e4e4;
 }
 .lab-case-nav-inner {
   position: sticky;
   top: 0;
-  padding: 30px 22px 40px;
+  min-height: 100vh;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  padding: 30px 22px 40px 20px;
   text-align: left;
 }
+/* ASCII bunny eating a carrot, centered at the bottom of the timeline */
+.lab-case-bunny {
+  margin-top: auto;
+  padding-top: 40px;
+  text-align: center;
+  user-select: none;
+}
+.lab-case-bunny-art {
+  display: inline-block;
+  text-align: left;
+  font-family: 'Roboto Mono', ui-monospace, monospace;
+  font-size: 14px;
+  line-height: 1.12;
+  white-space: pre;
+}
+/* T1: IBM Plex Mono 500, 12/19.8, caps */
 .lab-case-nav-name {
-  font-family: 'Inclusive Sans', system-ui, sans-serif;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
   font-weight: 500;
-  font-size: 11px;
-  letter-spacing: 0.04em;
+  font-size: 12px;
+  line-height: 1.65;
+  letter-spacing: 0.01em;
   text-transform: uppercase;
-  color: #ffffff;
+  color: #8f8f8f;
   padding-bottom: 18px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  border-bottom: 1px solid #e4e4e4;
 }
 .lab-case-nav-home {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   margin-top: 22px;
-  padding: 7px 13px;
+  padding: 2px;
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.12);
-  font-family: 'Inclusive Sans', system-ui, sans-serif;
+  background: #ececec;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
   font-weight: 500;
-  font-size: 10px;
-  letter-spacing: 0.04em;
+  font-size: 12px;
+  line-height: 1.65;
+  letter-spacing: 0.01em;
   text-transform: uppercase;
-  color: #ffffff;
+  color: #8f8f8f;
   transition: background 0.2s ease;
 }
 .lab-case-nav-home:hover {
-  background: rgba(255, 255, 255, 0.22);
+  background: #e0e0e0;
 }
 .lab-case-nav-list {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 24px;
-  margin-top: 30px;
+  gap: 11px;
+  margin-top: 20px;
 }
+/* T1: IBM Plex Mono 500, 12/19.8, caps — black */
 .lab-case-nav-item {
-  font-family: 'Inclusive Sans', system-ui, sans-serif;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
   font-weight: 500;
-  font-size: 11px;
-  letter-spacing: 0.03em;
+  font-size: 12px;
+  line-height: 1.65;
+  letter-spacing: 0.01em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.6);
+  color: #8f8f8f;
   text-align: left;
   background: none;
   border: none;
@@ -185,7 +209,7 @@
   transition: color 0.2s ease;
 }
 .lab-case-nav-item:hover {
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--olive);
 }
 .lab-case-nav-item.is-active {
   color: var(--olive);
@@ -200,11 +224,22 @@
   max-width: 1160px;
   margin: 0 auto;
 }
-/* divider line marking where the next section begins */
-.lab-case-content .lab-case-section + .lab-case-section {
-  margin-top: 80px;
-  padding-top: 80px;
-  border-top: 1px solid #e4e4e4;
+/* sections are separated by the ASCII grass divider (see .lab-case-divider) */
+
+/* ASCII garden strip between sections: flowers on stems + grass + one chick */
+.lab-case-divider {
+  font-family: 'Roboto Mono', ui-monospace, monospace;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.02;
+  white-space: pre;
+  text-align: center;
+  overflow: hidden;
+  user-select: none;
+  margin: 74px 0;
+}
+.lab-divider-row {
+  display: block;
 }
 .lab-case-section-label {
   font-family: 'Inclusive Sans', system-ui, sans-serif;
@@ -229,30 +264,32 @@
 .lab-case-heading + .lab-case-intro {
   margin-top: 15px;
 }
-/* style guide: "Title" — Outfit 700 caps (1.2x smaller) */
+/* card title — T1 vibe (IBM Plex Mono caps), bolder + bigger */
 .lab-case-heading {
-  font-family: var(--font-sans);
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
   font-weight: 700;
-  font-size: 29.2px;
-  line-height: 1.25;
+  font-size: 34px;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
   text-transform: uppercase;
-  color: var(--gray-dark);
+  color: #132b11;
   white-space: pre-line;
 }
 /* subheading — Averia Serif Libre italic; grey = ambient, dark = emphasized */
+/* under-title subheading — L1 (Figtree) */
 .lab-case-intro {
-  font-family: 'Averia Serif Libre', Georgia, serif;
+  font-family: 'Figtree', system-ui, sans-serif;
   font-weight: 400;
-  font-style: italic;
-  font-size: 28px;
-  letter-spacing: -1.5px;
+  font-style: normal;
+  font-size: 20px;
+  letter-spacing: 0.01em;
   line-height: 1.2;
-  color: #929290;
+  color: #666666;
   white-space: pre-line;
 }
 .lab-case-intro strong {
-  font-weight: 400;
-  color: #101010;
+  font-weight: 600;
+  color: #1a1a1a;
 }
 
 /* rows: header spans the top, 40px above the two top-aligned columns */
@@ -271,41 +308,68 @@
   min-width: 0;
 }
 /* header — Inclusive Sans 600 caps */
+/* section heading — T1 (IBM Plex Mono) in olive, bolded */
 .lab-case-eyebrow {
-  font-family: 'Inclusive Sans', system-ui, sans-serif;
-  font-weight: 600;
-  font-size: 16px;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.65;
   letter-spacing: 0.01em;
-  line-height: 1.6em;
   text-transform: uppercase;
-  color: #474747;
+  color: #717b08;
 }
 /* left column subheading — Averia Serif Libre italic; grey = ambient, dark = emphasized */
+/* left column subheading — L1 (Figtree) */
 .lab-case-statement {
-  font-family: 'Averia Serif Libre', Georgia, serif;
+  font-family: 'Figtree', system-ui, sans-serif;
   font-weight: 400;
-  font-style: italic;
-  font-size: 28px;
-  letter-spacing: -1.5px;
+  font-style: normal;
+  font-size: 20px;
+  letter-spacing: 0.01em;
   line-height: 1.2;
-  color: #929290;
+  color: #666666;
   white-space: pre-line;
 }
 .lab-case-statement strong {
-  font-weight: 400;
-  color: #101010;
+  font-weight: 600;
+  color: #1a1a1a;
 }
 /* right column body — Inclusive Sans; bold labels carry emphasis, colour unchanged */
+/* right column body — R1 (Figtree) */
 .lab-case-body {
-  font-family: 'Inclusive Sans', system-ui, sans-serif;
+  font-family: 'Figtree', system-ui, sans-serif;
   font-weight: 400;
-  font-size: 18px;
-  letter-spacing: 0;
-  line-height: 1.4;
-  color: #7a7a7a;
+  font-size: 14px;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+  color: #969696;
   white-space: pre-line;
 }
 .lab-case-body strong {
+  font-weight: 800;
+  color: inherit;
+}
+/* numbered list in the body column — hanging indent */
+.lab-case-olist {
+  margin: 20px 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: lab-ol;
+}
+.lab-case-olist li {
+  counter-increment: lab-ol;
+  position: relative;
+  padding-left: 28px;
+  margin-bottom: 16px;
+}
+.lab-case-olist li:last-child {
+  margin-bottom: 0;
+}
+.lab-case-olist li::before {
+  content: counter(lab-ol) '.';
+  position: absolute;
+  left: 0;
+  top: 0;
   font-weight: 700;
   color: inherit;
 }
@@ -338,45 +402,69 @@
   border: 1px solid #ececec;
 }
 
-/* overview heading: Title weight/size but keeps its typed casing */
+/* overview heading matches the other card titles (.lab-case-heading) */
 .lab-case-overview-heading {
-  text-transform: none;
-  max-width: 520px;
+  max-width: none;
 }
-.lab-case-overview-panels {
+/* overview meta-row: heading, then a row of labelled columns
+   (small uppercase olive label above muted grey value text) */
+.lab-case-ov-cols {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 28px;
-  margin-top: 40px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 44px;
+  margin-top: 44px;
+  align-items: start;
 }
-.lab-case-panel {
-  background: var(--paper-alt);
-  padding: 30px 26px;
+.lab-case-ov-col {
+  min-width: 0;
 }
-.lab-case-panel-title {
-  font-family: var(--font-serif);
+/* column label — T1 (IBM Plex Mono) in olive */
+.lab-case-ov-label {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
   font-weight: 700;
-  font-size: 21.7px;
-  margin-bottom: 16px;
+  font-size: 12px;
+  line-height: 1.65;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #717b08;
+  margin-bottom: 14px;
 }
-.lab-case-panel-item {
+/* column value — R1 (Figtree), muted grey */
+.lab-case-ov-body {
+  font-family: 'Figtree', system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.35;
+  letter-spacing: 0.01em;
+  color: #969696;
+  white-space: pre-line;
+}
+.lab-case-ov-body strong {
+  font-weight: 700;
+  color: #666666;
+}
+/* stacked sub-values (e.g. Scope): bold label over grey detail */
+.lab-case-ov-item {
   display: flex;
   flex-direction: column;
   margin-bottom: 14px;
 }
-.lab-case-panel-item strong {
-  font-family: var(--font-sans);
+.lab-case-ov-item:last-child {
+  margin-bottom: 0;
+}
+.lab-case-ov-item strong {
+  font-family: 'Figtree', system-ui, sans-serif;
   font-weight: 700;
-  font-size: 16px;
-  color: var(--gray);
+  font-size: 14px;
+  line-height: 1.35;
+  color: #666666;
 }
-.lab-case-panel-item span {
-  font-family: var(--font-sans);
-  font-size: 16px;
-  color: var(--gray-light);
-}
-.lab-case-panel .lab-case-body {
-  color: var(--gray-light);
+.lab-case-ov-item span {
+  font-family: 'Figtree', system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.35;
+  color: #969696;
 }
 
 @media (max-width: 900px) {
@@ -396,9 +484,12 @@
     margin: 20px auto 0;
   }
   .lab-case-row,
-  .lab-case-row--pair,
-  .lab-case-overview-panels {
+  .lab-case-row--pair {
     grid-template-columns: 1fr;
+  }
+  .lab-case-ov-cols {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
   }
   .lab-case-shell {
     flex-direction: column;
@@ -411,7 +502,11 @@
   }
   .lab-case-nav-inner {
     position: static;
+    min-height: 0;
     padding: 24px 5.4%;
+  }
+  .lab-case-bunny {
+    padding-top: 24px;
   }
   .lab-case-content {
     padding: 30px 5.4% 60px;

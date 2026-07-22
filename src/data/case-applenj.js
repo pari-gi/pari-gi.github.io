@@ -36,16 +36,8 @@ export default {
     {
       title: 'Overview',
       layout: 'overview',
-      heading: 'A failing business.\nLets fix it up.',
+      heading: 'A failing business.\n5 visits a month, no leads, no revenue.\nLets fix it up.',
       rows: [
-        {
-          eyebrow: 'Problem',
-          body: 'A dead division of the business. ONLY ~5 visits a month, no leads, no revenue.',
-        },
-        {
-          eyebrow: 'Solution',
-          body: 'Repositioned it from an “Apple Authorized reseller" into a full-service IT partner — one that handles setup, software, custom packages, and lifelong support, not just selling devices.\n\nCreated new business strategy, new brand identity, pulled a new target audience, and made the new site.',
-        },
         {
           eyebrow: 'Scope',
           items: [
@@ -53,6 +45,14 @@ export default {
             ['6 Week Timeline', 'Start to finish'],
             ['30+ Wireframes', 'Desktop'],
           ],
+        },
+        {
+          eyebrow: 'Problem',
+          body: 'A dead division of the business. ONLY ~5 visits a month, no leads, no revenue.',
+        },
+        {
+          eyebrow: 'Solution',
+          body: 'Repositioned it from an “Apple Authorized reseller" into a full-service IT partner — one that handles setup, software, custom packages, and lifelong support, not just selling devices.\n\nCreated new business strategy, new brand identity, pulled a new target audience, and made the new site.',
         },
         {
           eyebrow: 'Result',
@@ -163,12 +163,22 @@ export default {
         {
           eyebrow: 'Target Audience:',
           statement: 'Selected which buyers the business should reach based on extensive research. Set the primary, secondary, and tertiary targets.',
-          body: 'Three inputs drove audience selection: who Princeton IT Services already served, where Apple enterprise adoption was growing fastest, and which buyer segments were underserved by existing competitors.\n\nPrimary — IT Directors & Procurement Managers. Mid-to-large enterprises (200–5,000+ employees) in the Tri-State area standardizing on Apple hardware. These are the people who sign off on six-figure device orders. They evaluate 3–5 vendors, prioritize risk mitigation, and need to justify every purchase internally.\n\nSecondary — CTOs at scaling startups. Companies growing from 20 to 200 employees with no dedicated IT team. They need Apple deployment handled end-to-end so they can focus on product — not purchasing logistics.\n\nTertiary — Education & public sector IT leads. Managing institutional device fleets with strict budgets and complex procurement rules. Price sensitivity is high, but so is the need for lifecycle management and support coverage.',
+          body: 'Three inputs drove audience selection: who Princeton IT Services already served, where Apple enterprise adoption was growing fastest, and which buyer segments were underserved by existing competitors.',
+          list: [
+            '**Primary —** IT Directors & Procurement Managers. Mid-to-large enterprises (200–5,000+ employees) in the Tri-State area standardizing on Apple hardware. These are the people who sign off on six-figure device orders. They evaluate 3–5 vendors, prioritize risk mitigation, and need to justify every purchase internally.',
+            '**Secondary —** CTOs at scaling startups. Companies growing from 20 to 200 employees with no dedicated IT team. They need Apple deployment handled end-to-end so they can focus on product — not purchasing logistics.',
+            '**Tertiary —** Education & public sector IT leads. Managing institutional device fleets with strict budgets and complex procurement rules. Price sensitivity is high, but so is the need for lifecycle management and support coverage.',
+          ],
         },
         {
           eyebrow: 'User Archetypes:',
           statement: 'Avoided outdated user personas, instead built user archetypes — profiles defined by procurement context, decision drivers, and pain points.',
-          body: 'I deliberately avoided traditional user personas.\n\nGiving a fictional buyer a name, a photo, and a backstory feels tangible — but it introduces confirmation bias. You start designing for "Sarah, 42, IT Director at a mid-size healthcare firm" instead of designing for the behavioral patterns that actually drive purchasing decisions.\n\nInstead, I built behavioral archetypes — profiles defined by procurement context, decision drivers, and pain points:\n\n"I need reliability at scale." Managing 500+ devices across multiple locations. Evaluates vendors on deployment speed, support, and compatibility. Biggest fear: choosing a vendor that can\'t keep up when something breaks at 5 PM on a Monday.\n\n"I need this handled so I can focus on product." No internal IT team. Growing fast. Overwhelmed by Apple\'s enterprise programs and doesn\'t know where to start. Doesn\'t want to become an expert in device management — wants a partner who already is.\n\n"I need to stretch every dollar." Institutional buyer with rigid budgets and approval chains. Evaluates on total cost of ownership, not sticker price. Needs volume discounts, education pricing, and lifecycle management that prevents costly mid-cycle replacements.',
+          body: 'I deliberately avoided traditional user personas.\n\nGiving a fictional buyer a name, a photo, and a backstory feels tangible — but it introduces confirmation bias. You start designing for "Sarah, 42, IT Director at a mid-size healthcare firm" instead of designing for the behavioral patterns that actually drive purchasing decisions.\n\nInstead, I built behavioral archetypes — profiles defined by procurement context, decision drivers, and pain points:',
+          list: [
+            '**"I need reliability at scale."** Managing 500+ devices across multiple locations. Evaluates vendors on deployment speed, support, and compatibility. Biggest fear: choosing a vendor that can\'t keep up when something breaks at 5 PM on a Monday.',
+            '**"I need this handled so I can focus on product."** No internal IT team. Growing fast. Overwhelmed by Apple\'s enterprise programs and doesn\'t know where to start. Doesn\'t want to become an expert in device management — wants a partner who already is.',
+            '**"I need to stretch every dollar."** Institutional buyer with rigid budgets and approval chains. Evaluates on total cost of ownership, not sticker price. Needs volume discounts, education pricing, and lifecycle management that prevents costly mid-cycle replacements.',
+          ],
         },
         {
           eyebrow: 'User Pain Points:',
