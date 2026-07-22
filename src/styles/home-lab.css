@@ -41,20 +41,42 @@
   opacity: 0.7;
 }
 
-/* ---------- ASCII grassland hero ---------- */
+/* ---------- ASCII garden hero ---------- */
 .lab-field {
   position: relative;
-  /* full-bleed olive field, a long 3000px scroll */
+  /* full-bleed hero sized to the ASCII grid: 72 rows x 1.05 line-height */
   width: 100vw;
   margin-left: calc(50% - 50vw);
-  height: 3000px;
+  /* match the converted grid: 91 rows x 1.05 line-height */
+  height: calc(95.55 * max(0.5556vw, 7px));
   margin-top: -8px;
-  background: #838e10;
+  background-color: #0a230d;
   overflow: hidden;
+  cursor: url('/cursor-wateringcan.svg') 5 30, auto;
+}
+/* little flowers dropped along the mouse trail */
+.lab-trail-flower {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  font-size: 18px;
+  line-height: 1;
+  pointer-events: none;
+  z-index: 4;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  animation: lab-trail 1.7s ease-out forwards;
+}
+@keyframes lab-trail {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.3) rotate(-15deg); }
+  22% { opacity: 1; transform: translate(-50%, -50%) scale(1.15) rotate(0deg); }
+  70% { opacity: 1; transform: translate(-50%, -50%) scale(1) rotate(4deg); }
+  100% { opacity: 0; transform: translate(-50%, -60%) scale(0.85) rotate(8deg); }
 }
 .lab-field-critter,
 .lab-field-bird,
-.lab-field-flower {
+.lab-field-flower,
+.lab-field-tree,
+.lab-field-grass,
+.lab-field-ridge {
   position: absolute;
   margin: 0;
   font-family: ui-monospace, 'SFMono-Regular', Menlo, monospace;
@@ -64,6 +86,20 @@
   user-select: none;
   pointer-events: none;
 }
+/* forest + ground layers */
+.lab-field-tree {
+  line-height: 1;
+  font-size: 14px;
+}
+.lab-field-grass {
+  font-size: 13px;
+}
+.lab-field-ridge {
+  left: 0;
+  font-size: 13px;
+  opacity: 0.38;
+  overflow: hidden;
+}
 /* flowers: bright bloom (inline colour) over a dark-green stem, swaying in the wind */
 .lab-field-flower {
   line-height: 1.15;
@@ -72,7 +108,7 @@
   will-change: transform;
 }
 .lab-field-stem {
-  color: #20562d;
+  color: #40634f;
 }
 @keyframes lab-sway {
   0%, 100% { transform: rotate(-3.5deg); }
@@ -89,9 +125,9 @@
 }
 .lab-field-intro {
   position: absolute;
-  top: calc(12% - 50px);
-  right: calc(13% + 100px);
-  width: min(88%, 700px);
+  top: 21%;
+  right: calc(13% + 60px);
+  width: min(88%, 640px);
   text-align: right;
   color: #ffffff;
   font-family: 'Trirong', Georgia, serif;
@@ -100,7 +136,7 @@
   font-size: 26px;
   letter-spacing: normal;
   line-height: 1.4;
-  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.55);
   z-index: 2;
 }
 .lab-field-intro p {

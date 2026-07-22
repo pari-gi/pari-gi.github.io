@@ -1,0 +1,19 @@
+/* The converted garden grid: 300 cols x 91 rows behind the hero content.
+   Font size scales so all 300 columns span the viewport width exactly
+   (monospace char width ~0.6em → 100vw / (300 * 0.6) = 0.5556vw). */
+.ascii-garden {
+  --ag-fs: max(0.5556vw, 7px);
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+  font-family: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+  font-size: var(--ag-fs);
+  line-height: 1.05;
+  user-select: none;
+}
+.ag-row {
+  white-space: pre;
+  height: calc(var(--ag-fs) * 1.05);
+}
