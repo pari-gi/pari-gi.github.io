@@ -11,6 +11,9 @@ const STYLES = [
   { name: 'Label', cls: 'type-label', spec: 'Inclusive Sans · 600 · 14px · UPPERCASE' },
   { name: 'Mono', cls: 'type-mono', spec: 'Roboto Mono · 400 · 15px · UPPERCASE' },
   { name: 'Caption', cls: 'type-caption', spec: 'Inclusive Sans · 400 · 13px · muted' },
+  { name: 'T1', cls: 'type-t1', spec: 'IBM Plex Mono · 500 · 12/19.8px · UPPERCASE · 0.01em' },
+  { name: 'L1', cls: 'type-l1', spec: 'Figtree · 400 · 20/24px · 0.01em · #666' },
+  { name: 'R1', cls: 'type-r1', spec: 'Figtree · 400 · 14/16.8px · 0.01em · #969696' },
 ]
 
 export default function StyleGuide() {
