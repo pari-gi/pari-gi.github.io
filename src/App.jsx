@@ -6,7 +6,7 @@ import Landing from './pages/Landing.jsx'
 import Miscellany from './pages/Miscellany.jsx'
 import CaseStudy from './pages/CaseStudy.jsx'
 import HomeLab from './pages/HomeLab.jsx'
-import AppleNjLab from './pages/AppleNjLab.jsx'
+import CaseStudyLab from './pages/CaseStudyLab.jsx'
 import StyleGuide from './pages/StyleGuide.jsx'
 import './styles/chrome.css'
 import './styles/type.css'
@@ -27,7 +27,9 @@ export default function App() {
         <Route path="/hungie" element={<CaseStudy slug="hungie" />} />
         {/* sandbox copies — safe to redesign without touching the live pages */}
         <Route path="/home-lab" element={<HomeLab />} />
-        <Route path="/applenj-lab" element={<AppleNjLab />} />
+        <Route path="/applenj-lab" element={<CaseStudyLab slug="applenj" />} />
+        <Route path="/pits-lab" element={<CaseStudyLab slug="pits" />} />
+        <Route path="/hungie-lab" element={<CaseStudyLab slug="hungie" />} />
         <Route path="/styles" element={<StyleGuide />} />
         <Route path="*" element={<Landing />} />
       </Routes>

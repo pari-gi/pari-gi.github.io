@@ -1,11 +1,15 @@
-// SANDBOX COPY of the AppleNJ case study. Own route (/applenj-lab), own CSS
-// (case-lab.css), own lab-case- prefixed classes. Reuses the shared AppleNJ
-// content + emphasis data. Edit freely — nothing here touches the live case study.
+// SANDBOX case-study template — the redesigned timeline layout. Own CSS
+// (case-lab.css) and lab-case- prefixed classes. Rendered by the *-lab routes
+// (applenj-lab / pits-lab / hungie-lab) via a slug. Nothing here touches live.
 import { useState, useEffect, useRef, Fragment } from 'react'
 import { Link } from 'react-router-dom'
 import applenj from '../data/case-applenj.js'
+import pits from '../data/case-pits.js'
+import hungie from '../data/case-hungie.js'
 import RICH from '../data/rich-text.js'
 import '../styles/case-lab.css'
+
+const CASES = { applenj, pits, hungie }
 
 // Looks up the Figma-extracted emphasis runs for a passage and renders them.
 const richKey = (t) => t.toLowerCase().replace(/[^a-z0-9]+/g, '')
@@ -190,8 +194,8 @@ function Section({ section, num }) {
   )
 }
 
-export default function AppleNjLab() {
-  const data = applenj
+export default function CaseStudyLab({ slug }) {
+  const data = CASES[slug]
   const [active, setActive] = useState(0)
 
   // scroll-spy: highlight the section currently in view
@@ -254,7 +258,12 @@ export default function AppleNjLab() {
           <div className="lab-case-content">
             {data.sections.map((s, i) => (
               <Fragment key={i}>
-                {i > 0 && <CaseDivider />}
+                {i > 0 &&
+                  (data.sections[i - 1].layout === 'overview' ? (
+                    <hr className="lab-case-hr" />
+                  ) : (
+                    <CaseDivider />
+                  ))}
                 <Section section={s} num={i} />
               </Fragment>
             ))}

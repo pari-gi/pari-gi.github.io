@@ -36,20 +36,20 @@ export default {
       heading: '70,000 visitors. Zero conversions.\nLets fix it up.',
       rows: [
         {
-          eyebrow: 'Problem',
-          body: '70,000 monthly visitors and almost none converting. The homepage buried five business subdivisions and gave enterprise buyers no clear path to act.',
-        },
-        {
-          eyebrow: 'Solution',
-          body: 'A redesigned, conversion-focused homepage — horizontal flip cards surfacing all five subdivisions at once, a clear value proposition, and one focused CTA.',
-        },
-        {
           eyebrow: 'Scope',
           items: [
             ['Product Design Intern', 'One of the two interns'],
             ['6 Week Timeline', 'Start to finish'],
             ['Hero redesign', 'Desktop'],
           ],
+        },
+        {
+          eyebrow: 'Problem',
+          body: '70,000 monthly visitors and almost none converting. The homepage buried five business subdivisions and gave enterprise buyers no clear path to act.',
+        },
+        {
+          eyebrow: 'Solution',
+          body: 'A redesigned, conversion-focused homepage — horizontal flip cards surfacing all five subdivisions at once, a clear value proposition, and one focused CTA.',
         },
         {
           eyebrow: 'Result',
@@ -59,7 +59,7 @@ export default {
     },
     {
       title: 'Context',
-      heading: 'Problem',
+      heading: 'Context',
       intro: '70,000 monthly visitors. Near zero conversions. Average session duration under 7 seconds.\nThe hero section — the first touchpoint for every visitor — was actively working against the business.',
       rows: [
         {
@@ -94,7 +94,7 @@ export default {
         {
           eyebrow: 'The original design:',
           body: 'A tile layout with a rotating carousel on the left and subdivision logo tiles on the right. No unified headline. No clear hierarchy. Competing focal points fighting for attention.',
-          images: [{ src: originalSite, w: 942, alt: 'The original Princeton IT Services hero' }],
+          images: [{ src: originalSite, w: 471, alt: 'The original Princeton IT Services hero' }],
         },
         {
           eyebrow: 'Heatmap Analysis:',

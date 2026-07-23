@@ -62,7 +62,7 @@ export default {
     },
     {
       title: 'Context',
-      heading: 'Problem',
+      heading: 'Context',
       intro: 'Averaging ~5 unique visits per month. The existing platform was invisible — generating virtually no traffic, no leads, and no revenue.',
       rows: [
         {
@@ -74,18 +74,6 @@ export default {
           eyebrow: 'My Diagnosis',
           statement: "The market didn't know what this company actually was. The company had Fortune 10 clients and capabilities most resellers couldn't touch, but the market had no idea.",
           body: "Princeton IT Services (the parent company) wasn't a scrappy startup trying to break into the Apple reseller space, it was a 20+ year enterprise IT firm with a client roster that included JP Morgan Chase, Citi, McGraw Hill Financial and more. The company had built mission-critical infrastructure for Fortune 10 organizations. It had 1,000+ channel partnerships through Tech365. It had managed IT capabilities, remote monitoring, cloud migration, data backup, network security, that most regional Apple resellers couldn't touch. None of this existed anywhere on the Apple reseller platform. The market didn't know what this company actually was.",
-        },
-        {
-          pair: [
-            {
-              eyebrow: 'Challenges:',
-              body: "Uncover why the platform was failing at both a strategic and experiential level\nIdentify the right target customer and define their unmet needs\nReposition the entire brand for the B2B enterprise market\nDesign a digital product that functions as the company's primary lead generation engine",
-            },
-            {
-              eyebrow: 'Constraints:',
-              body: 'Solo designer — every decision was mine.\n6 week timeline\nZero existing assets\nLimited research budget',
-            },
-          ],
         },
         {
           eyebrow: 'The Goals',
@@ -103,7 +91,7 @@ export default {
           eyebrow: 'apple.tech365.io, before the redesign',
           statement: 'A storefront that listed products but never sold outcomes — no value proposition, no conversion pathway, no trust.',
           body: 'The old site competed directly with Apple.com, Best Buy, and Amazon with none of the brand equity, traffic, or pricing power to win. It mixed Indian and U.S. markets under one brand, offered no way for an enterprise buyer to request a quote, and gave no proof the company could deliver at scale.',
-          images: [{ src: beforeSite, w: 500, alt: 'The existing apple.tech365.io site before the redesign' }],
+          images: [{ src: beforeSite, w: 250, alt: 'The existing apple.tech365.io site before the redesign' }],
         },
       ],
     },

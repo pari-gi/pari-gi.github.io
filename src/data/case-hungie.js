@@ -26,20 +26,20 @@ export default {
       heading: 'A working idea.\nLets make it a product.',
       rows: [
         {
-          eyebrow: 'Problem',
-          body: 'An AI recipe app in a saturated market — no differentiator, no reason to return, and AI-generated wireframes that would have cost the founders credibility.',
-        },
-        {
-          eyebrow: 'Solution',
-          body: 'A new business direction built around a gamified community, a brand with personality that carries the game without the pressure, and an AI experience redesigned from published human-AI interaction research.',
-        },
-        {
           eyebrow: 'Scope',
           items: [
             ['Freelance Product Designer', 'Solo designer'],
             ['6 Week Timeline', 'Start to finish'],
             ['Full app', 'Mobile'],
           ],
+        },
+        {
+          eyebrow: 'Problem',
+          body: 'An AI recipe app in a saturated market — no differentiator, no reason to return, and AI-generated wireframes that would have cost the founders credibility.',
+        },
+        {
+          eyebrow: 'Solution',
+          body: 'A new business direction built around a gamified community, a brand with personality that carries the game without the pressure, and an AI experience redesigned from published human-AI interaction research.',
         },
         {
           eyebrow: 'Result',

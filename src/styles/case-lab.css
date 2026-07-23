@@ -169,7 +169,7 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  margin-top: 22px;
+  margin-top: 0;
   padding: 2px;
   border-radius: 8px;
   background: #ececec;
@@ -190,7 +190,8 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 11px;
-  margin-top: 20px;
+  /* +7px to offset the Home button moving up, so section buttons stay put */
+  margin-top: 27px;
 }
 /* T1: IBM Plex Mono 500, 12/19.8, caps — black */
 .lab-case-nav-item {
@@ -213,6 +214,7 @@
 }
 .lab-case-nav-item.is-active {
   color: var(--olive);
+  font-weight: 700;
 }
 
 .lab-case-main {
@@ -236,10 +238,16 @@
   text-align: center;
   overflow: hidden;
   user-select: none;
-  margin: 74px 0;
+  margin: 80px 0;
 }
 .lab-divider-row {
   display: block;
+}
+/* plain horizontal rule (used between Overview and Context) */
+.lab-case-hr {
+  border: none;
+  border-top: 1px solid #e4e4e4;
+  margin: 70px 0 140px;
 }
 .lab-case-section-label {
   font-family: 'Inclusive Sans', system-ui, sans-serif;
@@ -255,8 +263,9 @@
   max-width: 935px;
   padding: 0;
 }
+/* 60px between each T1/L1/R1 row chunk within a section */
 .lab-case-section-body > * + * {
-  margin-top: 90px;
+  margin-top: 60px;
 }
 .lab-case-heading + * {
   margin-top: 45px;
