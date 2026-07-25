@@ -15,10 +15,12 @@ export default function App() {
   const { pathname } = useLocation()
   // these render their own chrome (no shared nav/footer)
   const bareChrome = pathname === '/home-lab' || pathname === '/styles'
+  // case-study lab pages have their own top nav; hide the shared one (keep footer)
+  const hideNav = bareChrome || pathname.endsWith('-lab')
   return (
     <div className="page">
       <ScrollManager />
-      {!bareChrome && <Nav />}
+      {!hideNav && <Nav />}
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/miscellany" element={<Miscellany />} />

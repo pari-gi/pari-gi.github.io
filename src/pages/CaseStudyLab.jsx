@@ -7,6 +7,7 @@ import applenj from '../data/case-applenj.js'
 import pits from '../data/case-pits.js'
 import hungie from '../data/case-hungie.js'
 import RICH from '../data/rich-text.js'
+import AsciiGarden from '../components/AsciiGarden.jsx'
 import '../styles/case-lab.css'
 
 const CASES = { applenj, pits, hungie }
@@ -243,7 +244,17 @@ export default function CaseStudyLab({ slug }) {
         </aside>
 
         <div className="lab-case-main">
+          <nav className="lab-case-topnav">
+            <Link to="/home-lab">WORK</Link>
+            <Link to="/home-lab">ME</Link>
+            <a href="/resume.pdf">RESUME</a>
+            <a href="https://www.linkedin.com/in/pari-gill/">LINKEDIN</a>
+            <Link to="/miscellany">MISCELLANY</Link>
+          </nav>
           <div className="lab-case-hero">
+            <div className="lab-case-hero-bg" aria-hidden="true">
+              <AsciiGarden />
+            </div>
             <p className="lab-case-role">{data.role}</p>
             <div className="lab-case-hero-inner">
               <h1 className="lab-case-title">{data.name}</h1>
@@ -252,18 +263,12 @@ export default function CaseStudyLab({ slug }) {
               </p>
               <img className="lab-case-hero-img" src={data.heroImage} alt={`${data.name} final design`} />
             </div>
-            <p className="lab-case-scroll">scroll to explore</p>
           </div>
 
           <div className="lab-case-content">
             {data.sections.map((s, i) => (
               <Fragment key={i}>
-                {i > 0 &&
-                  (data.sections[i - 1].layout === 'overview' ? (
-                    <hr className="lab-case-hr" />
-                  ) : (
-                    <CaseDivider />
-                  ))}
+                {i > 0 && <CaseDivider />}
                 <Section section={s} num={i} />
               </Fragment>
             ))}

@@ -1,19 +1,59 @@
 @import url('https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:ital,wght@0,300;0,400;1,300;1,400&family=Inclusive+Sans:ital,wght@0,400;0,600;0,700&family=Roboto+Mono:wght@400;500&display=swap');
 /* SANDBOX COPY of case.css — case-* classes prefixed lab-. Safe to edit freely. */
+/* ---------- top nav (matches the reference image) ---------- */
+.lab-case-topnav {
+  display: flex;
+  justify-content: flex-end; /* aligned to the right */
+  align-items: center;
+  box-sizing: border-box;
+  height: 40px;
+  gap: 30px; /* 30px between each word */
+  padding: 0 70px; /* 70px from the right edge */
+  background: #ffffff;
+  border-bottom: 1px solid #e4e4e4;
+}
+/* T1 vibe — IBM Plex Mono, uppercase, olive; sized to match the timeline */
+.lab-case-topnav a {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #717b08;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+.lab-case-topnav a:hover {
+  opacity: 0.6;
+}
+
 /* ---------- hero ---------- */
 .lab-case-hero {
   position: relative;
-  background: var(--paper-alt);
+  height: 600px;
+  background: #0a230d; /* same green as the home ASCII garden */
+  overflow: hidden;
   padding: 28px 0 0;
-  border-top: 1px solid #d9d9d9;
 }
+/* the ASCII garden fills the hero as its background */
+.lab-case-hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+.lab-case-hero > *:not(.lab-case-hero-bg) {
+  position: relative;
+  z-index: 1;
+}
+/* role — L1 (Figtree 400, 20px); lightened for the dark hero */
 .lab-case-role {
-  font-family: var(--font-sans);
-  font-weight: 700;
-  font-size: 16px;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--gray);
+  font-family: 'Figtree', system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  color: #d7d4c6;
   padding: 0 5.4%;
 }
 .lab-case-hero-inner {
@@ -23,15 +63,19 @@
   padding: 16px 0 0 5.4%;
   min-height: 340px;
 }
+/* title — same face as the section headings (IBM Plex Mono), white, 1.5x */
 .lab-case-title {
-  font-family: var(--font-sans);
-  font-weight: 400;
-  font-size: clamp(36px, 5.3vw, 50px);
-  color: var(--gray);
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-weight: 700;
+  font-size: 51px; /* 1.5x the 34px section heading */
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: #ffffff;
   flex: 0 0 27%;
 }
 .lab-case-highlights {
-  color: var(--gray);
+  color: #cbc8ba;
   font-size: 17px;
   line-height: 1.35;
   text-align: right;
@@ -44,8 +88,8 @@
   margin-left: auto;
 }
 .lab-case-scroll {
-  border-top: 1px solid #d9d9d9;
-  color: var(--gray);
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  color: #b6b3a6;
   font-size: 14px;
   padding: 8px 5.4% 20px;
 }

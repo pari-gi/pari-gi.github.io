@@ -503,7 +503,9 @@
   position: relative;
   width: 100vw;
   margin-left: calc(50% - 50vw);
-  height: 65.344vw; /* 988px — the garden starts here */
+  /* sized so the gap under the "Pari Gill" ink is 60px (at the 1512 frame):
+     the wordmark's visual bottom lands at 57.68vw, + 3.968vw (60px) */
+  height: 61.65vw;
   margin-top: 20px; /* 20px of whitespace at the top of the page */
   background: #ffffff;
   overflow: hidden;
@@ -583,11 +585,11 @@
   white-space: pre-line;
 }
 
-/* ASCII critter — Times New Roman bold, 12.78px, olive */
+/* ASCII critter — Figtree 900, 16px, olive */
 .lab-hero-critter {
   left: 3.571vw;  /* 54px (moved left 10) */
   top: 28.902vw;  /* 437px (moved up 35) */
-  font-family: 'Times New Roman', Times, serif;
+  font-family: 'Figtree', system-ui, sans-serif;
   font-weight: 900;
   font-size: 1.058vw; /* 16px, up from 12.78 */
   -webkit-text-stroke: 0.02em currentColor; /* thickens the strokes a touch */
@@ -693,5 +695,5 @@
   display: flex;
   flex-direction: column;
   align-items: center; /* centred on the page */
-  gap: 27.5vh; /* half the previous spacing */
+  gap: 120px; /* fixed 120px between cards */
 }

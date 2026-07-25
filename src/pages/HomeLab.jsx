@@ -29,7 +29,7 @@ const CRITTER = `      (@_
 <____)`
 
 const BIO =
-  'Computer Science student at UMD\nwho likes solving problems and loves to design, specializing in AI design & business needs.'
+  'UMD Computer Science student turning messy problems into thoughtful products, especially where AI, design, and business overlap.'
 
 // case-study cards over the garden. Hungie's copy + pills come from the Figma
 // (group 2:793); the other two reuse each case study's own overview wording.
