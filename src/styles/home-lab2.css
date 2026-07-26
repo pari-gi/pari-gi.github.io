@@ -1,0 +1,282 @@
+/* ============================================================
+   V2 case-study cards for /home-lab2.
+   Figma "NEW HOME PAGE V2" (4:791) + hover state (4:919).
+   Cards sit over the same sticky ASCII garden as /home-lab.
+   ============================================================ */
+
+/* 2-column grid, centred, overlaid on the sticky garden background */
+.lab2-cards {
+  position: relative;
+  z-index: 3;
+  margin-top: calc(-1 * var(--work-bg-h));
+  padding-top: 8.135vw; /* 123px — first card row into the garden */
+  padding-bottom: 18vh;
+  display: grid;
+  grid-template-columns: repeat(2, 457px);
+  justify-content: center;
+  align-items: start;
+  column-gap: 100px;
+  row-gap: 100px;
+}
+
+.lab2-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 457px;
+  min-height: 410px; /* all cards the same height; tags pin to the bottom */
+  background: #ffffff;
+  color: inherit;
+  text-decoration: none;
+  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.18);
+  transition: box-shadow 0.3s ease;
+}
+.lab2-card:hover {
+  z-index: 5;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
+}
+
+/* white frame (20px top, 22px sides) around the colored banner */
+.lab2-header {
+  background: #ffffff;
+  padding: 20px 22px 0;
+}
+/* banner clips the tall image to a "peek"; it grows on hover to reveal
+   the full image — slow + smooth, nothing scales */
+.lab2-banner {
+  height: 139px; /* 40px less of the image shows before hover */
+  overflow: hidden;
+  transition: height 1.05s cubic-bezier(0.33, 0, 0.2, 1); /* slower, softer reveal */
+}
+.lab2-card:hover .lab2-banner {
+  height: 247px;
+}
+/* the image is the full phone-on-color composition (~247px tall at banner
+   width), so only its top ~179px shows until the banner expands */
+.lab2-banner img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.lab2-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 26px 24px;
+}
+.lab2-head {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+/* title — Ibarra Real Nova Bold 25px */
+.lab2-title {
+  font-family: 'Ibarra Real Nova', Georgia, serif;
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 1.2;
+  color: #000000;
+}
+/* role — IBM Plex Mono 11px, grey */
+.lab2-role {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-weight: 400;
+  font-size: 11px;
+  letter-spacing: 0.02em;
+  color: #b9b9b9;
+  white-space: nowrap;
+}
+/* description — Figtree 14px / 1.1 */
+.lab2-desc {
+  margin-top: 12px;
+  font-family: 'Figtree', system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.1;
+  color: #000000;
+}
+/* flexible spacer: fills to push tags to the bottom (equal-height cards) but
+   never shrinks below 30px, so the paragraph never touches the tags on expand */
+.lab2-spacer {
+  flex: 1 1 auto;
+  min-height: 30px;
+}
+.lab2-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; /* 10px between each tag */
+}
+/* pills — dark green with white mono text */
+.lab2-pill {
+  display: inline-flex;
+  align-items: center;
+  height: 22px;
+  padding: 0 8px;
+  background: #152712;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-weight: 400;
+  font-size: 12px;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+/* narrow screens: single column */
+@media (max-width: 1040px) {
+  .lab2-cards {
+    grid-template-columns: minmax(0, 457px);
+  }
+}
+
+/* ---------- custom cursor: olive circle everywhere, expands into a
+   pill on case-study hover (Figma "3 states") ---------- */
+.lab2-page,
+.lab2-page * {
+  cursor: none !important;
+}
+.lab2-cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  transform: translate(-50%, -50%);
+  height: 25px;
+  width: 25px;
+  border-radius: 12.5px;
+  background: #717b08;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 10000;
+  transition: width 0.45s cubic-bezier(0.33, 0, 0.2, 1);
+}
+.lab2-cursor-text {
+  font-family: 'Figtree', system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: 0.01em;
+  color: #f1efd8;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+/* text width (151 / 107 at 14px Figtree) + 10px on each side */
+.lab2-cursor--view { width: 171px; }
+.lab2-cursor--soon { width: 127px; }
+.lab2-cursor--view .lab2-cursor-text,
+.lab2-cursor--soon .lab2-cursor-text {
+  opacity: 1;
+}
+
+/* ---------- footer (Figma "NEW FOOTER" 11:998) ---------- */
+.lab2-footer {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  min-height: 315px;
+  background: #ffffff;
+  overflow: hidden;
+}
+.lab2-footer > * {
+  position: absolute;
+  margin: 0;
+}
+/* olive quote — IBM Plex Mono Bold 12px, uppercase */
+.lab2-foot-quote {
+  left: 10.45vw; /* 158px */
+  top: 2.38vw;   /* 101 - 65 = 36px */
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.35;
+  text-transform: uppercase;
+  color: #717b08;
+  white-space: pre-line;
+}
+/* orange ASCII cat — Figtree 14px; chases the mouse */
+.lab2-foot-cat {
+  left: 13.1vw;  /* 198px */
+  top: 9.79vw;   /* 213 - 65 = 148px */
+  font-family: 'Figtree', system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.1;
+  color: #f36c26;
+  white-space: pre;
+  transition: transform 0.55s cubic-bezier(0.34, 1.4, 0.5, 1); /* springy "jump" */
+  will-change: transform;
+}
+/* [MENU] / [CONTACT] columns — IBM Plex Mono 12px, dark green */
+.lab2-foot-menu {
+  left: 71.69vw; /* 1084px */
+  top: 2.58vw;   /* 104 - 65 = 39px */
+}
+.lab2-foot-contact {
+  left: 80.75vw; /* 1221px */
+  top: 2.58vw;
+}
+.lab2-foot-menu,
+.lab2-foot-contact {
+  display: flex;
+  flex-direction: column;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 12px;
+  line-height: 1.6;
+  color: #152712;
+}
+.lab2-foot-col-title {
+  margin-bottom: 14px;
+}
+.lab2-foot-menu a,
+.lab2-foot-contact a {
+  color: #152712;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.lab2-foot-menu a:hover,
+.lab2-foot-contact a:hover {
+  color: #717b08;
+}
+/* bunny — exact Figma render (node 11:983), far right; shown near native
+   size so it stays crisp rather than upscaled + heavy */
+.lab2-foot-bunny {
+  left: 81vw;    /* ~1225px */
+  top: 12.7vw;   /* 257 - 65 = 192px */
+  width: 5vw;   /* ~76px (native render width) */
+  height: auto;
+  display: block;
+}
+/* full-width ASCII grass strip along the bottom (like the case-study dividers) */
+.lab2-foot-band {
+  left: 0;
+  bottom: 20px;
+  width: 100%;
+}
+.lab2-grass {
+  font-family: 'Roboto Mono', ui-monospace, monospace;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.02;
+  white-space: pre;
+  text-align: center;
+  overflow: hidden;
+  user-select: none;
+}
+.lab2-grass-row {
+  display: block;
+}
+
+/* cursor over the footer: brown cat text, no pill */
+.lab2-cursor--footer {
+  width: auto;
+  min-width: 0;
+  height: auto;
+  background: transparent;
+  overflow: visible;
+}
+.lab2-cursor--footer .lab2-cursor-text {
+  opacity: 1;
+  color: #965116;
+  font-weight: 700;
+  white-space: nowrap;
+}

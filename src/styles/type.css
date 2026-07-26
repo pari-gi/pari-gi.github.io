@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inclusive+Sans:ital,wght@0,400;0,600;0,700&family=Roboto+Mono:wght@400;500&family=IBM+Plex+Mono:wght@400;500;600;700&family=Figtree:wght@300;400;500;600;700;800;900&family=Instrument+Serif:ital,wght@0,400;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inclusive+Sans:ital,wght@0,400;0,600;0,700&family=Roboto+Mono:wght@400;500&family=IBM+Plex+Mono:wght@400;500;600;700&family=Figtree:wght@300;400;500;600;700;800;900&family=Instrument+Serif:ital,wght@0,400;1,400&family=Ibarra+Real+Nova:ital,wght@0,400;0,600;0,700;1,400&display=swap');
 
 /* ============================================================
    NAMED TYPE SYSTEM  (emmi-inspired: Averia Serif Libre,
@@ -98,6 +98,15 @@
   line-height: 1.2;
   letter-spacing: 0.01em;
   color: #969696;
+}
+
+/* C1 — Self Modern title/lead (NOTE: font files not yet loaded; falls back) */
+.type-c1 {
+  font-family: 'Self Modern', Georgia, 'Times New Roman', serif;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 1.2; /* 28.8px */
+  letter-spacing: 0.01em;
 }
 
 /* keep the non-italic styles upright regardless of inherited context */

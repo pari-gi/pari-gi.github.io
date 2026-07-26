@@ -14,6 +14,7 @@ const STYLES = [
   { name: 'T1', cls: 'type-t1', spec: 'IBM Plex Mono · 500 · 12/19.8px · UPPERCASE · 0.01em' },
   { name: 'L1', cls: 'type-l1', spec: 'Figtree · 400 · 20/24px · 0.01em · #666' },
   { name: 'R1', cls: 'type-r1', spec: 'Figtree · 400 · 14/16.8px · 0.01em · #969696' },
+  { name: 'C1', cls: 'type-c1', spec: 'Self Modern · 400 · 24/28.8px · 0.01em' },
 ]
 
 export default function StyleGuide() {

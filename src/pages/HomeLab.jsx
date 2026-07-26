@@ -38,27 +38,33 @@ const CARDS = [
     slug: 'hungie',
     href: '/hungie-lab',
     label: 'HUNGIE',
+    role: 'SOLO PRODUCT DESIGNER (FREELANCE)',
     desc: 'Hungie was built around AI, but without users’ trust in it, the product’s value collapsed.\n\nI reshaped the product strategy and redesigned the experience to make the AI feel intelligent, personalized, and responsive rather than random — bringing the algorithm’s reasoning and adaptability from the back end to the front end so users could understand and trust the product.',
-    pills: ['AI', 'BUSINESS REPOSITIONING', 'SOLO DESIGNER FREELANCE'],
+    pills: ['AI', 'BUSINESS REPOSITIONING'],
     images: [hungie1, hungie2, hungie3],
   },
   {
     slug: 'applenj',
     href: '/applenj-lab',
     label: 'APPLENJ',
+    role: 'PRODUCT DESIGN INTERN',
     desc: 'A dead division of the business. ONLY ~5 visits a month, no leads, no revenue.\n\nRepositioned it from an “Apple Authorized reseller” into a full-service IT partner — one that handles setup, software, custom packages, and lifelong support, not just selling devices.',
-    pills: ['BUSINESS STRATEGY', 'USER RESEARCH & TESTING', 'PRODUCT DESIGN INTERN'],
+    pills: ['BUSINESS STRATEGY', 'USER RESEARCH & TESTING'],
     images: [apple1, apple2, apple3],
   },
   {
     slug: 'pits',
     href: '/pits-lab',
     label: 'PRINCETON IT SERVICES',
+    role: 'PRODUCT DESIGN INTERN',
     desc: '70,000 monthly visitors and almost none converting. The homepage buried five business subdivisions and gave enterprise buyers no clear path to act.\n\nA redesigned, conversion-focused homepage — horizontal flip cards surfacing all five subdivisions at once, a clear value proposition, and one focused CTA.',
-    pills: ['USER RESEARCH & TESTING', 'DATA DRIVEN DESIGN', 'PRODUCT DESIGN INTERN'],
+    pills: ['USER RESEARCH & TESTING', 'DATA DRIVEN DESIGN'],
     images: [pits1, pits2, pits3],
   },
 ]
+
+// long run of dashes for the ASCII card border (clipped to each edge)
+const DASHES = '-'.repeat(400)
 
 export default function HomeLab() {
   // flower trail that follows the mouse
@@ -115,7 +121,10 @@ export default function HomeLab() {
         <div className="lab-work-cards">
           {CARDS.map((c) => (
             <Link key={c.slug} to={c.href} className="lab-work-card">
-              <p className="lab-work-label">{c.label}</p>
+              <p className="lab-work-label">
+                <span className="lab-work-name">{c.label}</span>
+                {c.role && <span className="lab-work-role"> * {c.role}</span>}
+              </p>
               <p className="lab-work-desc">{c.desc}</p>
               <div className="lab-work-pills">
                 {c.pills.map((p) => (
@@ -125,6 +134,10 @@ export default function HomeLab() {
               {c.images.map((src, i) => (
                 <img key={i} className={`lab-work-img lab-work-img--${i + 1}`} src={src} alt="" />
               ))}
+              <span className="lab-work-brd lab-work-brd--top" aria-hidden="true">{DASHES}</span>
+              <span className="lab-work-brd lab-work-brd--bottom" aria-hidden="true">{DASHES}</span>
+              <span className="lab-work-brd lab-work-brd--left" aria-hidden="true">{DASHES}</span>
+              <span className="lab-work-brd lab-work-brd--right" aria-hidden="true">{DASHES}</span>
             </Link>
           ))}
         </div>

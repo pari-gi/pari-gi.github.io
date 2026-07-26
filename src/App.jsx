@@ -6,6 +6,7 @@ import Landing from './pages/Landing.jsx'
 import Miscellany from './pages/Miscellany.jsx'
 import CaseStudy from './pages/CaseStudy.jsx'
 import HomeLab from './pages/HomeLab.jsx'
+import HomeLab2 from './pages/HomeLab2.jsx'
 import CaseStudyLab from './pages/CaseStudyLab.jsx'
 import StyleGuide from './pages/StyleGuide.jsx'
 import './styles/chrome.css'
@@ -14,7 +15,7 @@ import './styles/type.css'
 export default function App() {
   const { pathname } = useLocation()
   // these render their own chrome (no shared nav/footer)
-  const bareChrome = pathname === '/home-lab' || pathname === '/styles'
+  const bareChrome = pathname === '/home-lab' || pathname === '/home-lab2' || pathname === '/styles'
   // case-study lab pages have their own top nav; hide the shared one (keep footer)
   const hideNav = bareChrome || pathname.endsWith('-lab')
   return (
@@ -29,6 +30,7 @@ export default function App() {
         <Route path="/hungie" element={<CaseStudy slug="hungie" />} />
         {/* sandbox copies — safe to redesign without touching the live pages */}
         <Route path="/home-lab" element={<HomeLab />} />
+        <Route path="/home-lab2" element={<HomeLab2 />} />
         <Route path="/applenj-lab" element={<CaseStudyLab slug="applenj" />} />
         <Route path="/pits-lab" element={<CaseStudyLab slug="pits" />} />
         <Route path="/hungie-lab" element={<CaseStudyLab slug="hungie" />} />
