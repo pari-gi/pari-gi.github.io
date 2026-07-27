@@ -5,6 +5,7 @@
   margin-left: calc(50% - 50vw);
   min-height: 315px;
   background: #ffffff;
+  border-top: 3px solid #152712;
   overflow: hidden;
 }
 .lab2-footer > * {
@@ -17,7 +18,7 @@
   top: 2.38vw;   /* 36px */
   font-family: 'IBM Plex Mono', ui-monospace, monospace;
   font-weight: 700;
-  font-size: 24px;
+  font-size: 14px;
   line-height: 1.35;
   text-transform: uppercase;
   color: #717b08;
