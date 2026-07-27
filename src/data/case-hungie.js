@@ -61,7 +61,8 @@ export default {
           eyebrow: 'What existed',
           statement: 'They had the code. And AI generated wireframes, which we wiped entirely.',
           body: "The founders had a direction, most of the code already written, and a set of wireframes they had generated with AI and wanted me to build from. I pushed back. The wireframes carried structural decisions nobody had deliberately made, and inheriting them meant inheriting reasoning that didn't exist. We rebuilt the interface from the ground up.",
-          images: [{ src: aiWireframes, w: 988, alt: 'The original AI-generated wireframes' }],
+          imagesRight: true,
+          images: [{ src: aiWireframes, alt: 'The original AI-generated wireframes' }],
         },
         {
           eyebrow: 'My initial diagnosis',
@@ -149,7 +150,8 @@ export default {
           eyebrow: 'Exploration:',
           statement: 'Pulled references that solved the nagging effect of gamification.',
           body: 'I pulled references from apps that gamify without nagging, and from brands that feel playful without feeling childish.\n\nA pattern showed up fast. The apps that made streaks feel heavy all looked like productivity tools — thin type, clean grids, progress bars that read as a report card. The ones that felt light led with character. Not more features. More personality.',
-          images: [{ src: brandRefs, w: 1012, alt: 'Brand reference exploration' }],
+          imagesRight: true,
+          images: [{ src: brandRefs, alt: 'Brand reference exploration' }],
         },
         {
           eyebrow: 'Design System',
@@ -229,17 +231,7 @@ export default {
     {
       title: 'Testing & Validation',
       heading: 'Testing & Validation',
-      intro: 'Usability testing',
-      rows: [
-        {
-          statement: 'unfortunately, this section is locked.\nplease contact me for more info!',
-        },
-      ],
-    },
-    {
-      title: 'Reflection',
-      heading: 'Reflection',
-      intro: "What I'd keep, what I'd change, and what I didn't expect to learn.",
+      intro: 'unfortunately, this section is locked. please contact me for more info',
       rows: [],
     },
   ],

@@ -30,15 +30,19 @@
 /* ---------- hero ---------- */
 .lab-case-hero {
   position: relative;
-  height: 600px;
+  height: 550px;
   background: #0a230d; /* same green as the home ASCII garden */
   overflow: hidden;
   padding: 28px 0 0;
 }
-/* the ASCII garden fills the hero as its background */
+/* the ASCII garden, anchored to the hero's bottom so the 550px window
+   chops the extra rows off the TOP of the artwork */
 .lab-case-hero-bg {
   position: absolute;
-  inset: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: calc(95.55 * max(0.5556vw, 7px)); /* the garden grid's natural height */
   z-index: 0;
   pointer-events: none;
 }
@@ -46,22 +50,20 @@
   position: relative;
   z-index: 1;
 }
-/* role — L1 (Figtree 400, 20px); lightened for the dark hero */
+/* role — L1 (Figtree), capitalized, under the title */
 .lab-case-role {
   font-family: 'Figtree', system-ui, sans-serif;
   font-weight: 400;
   font-size: 20px;
   line-height: 1.2;
   letter-spacing: 0.01em;
+  text-transform: capitalize;
   color: #d7d4c6;
-  padding: 0 5.4%;
+  margin-top: 12px;
 }
 .lab-case-hero-inner {
-  display: flex;
-  align-items: flex-start;
-  gap: 3%;
-  padding: 16px 0 0 5.4%;
-  min-height: 340px;
+  display: block;
+  padding: 30px 0 0 5.4%;
 }
 /* title — same face as the section headings (IBM Plex Mono), white, 1.5x */
 .lab-case-title {
@@ -72,26 +74,6 @@
   letter-spacing: 0.01em;
   text-transform: uppercase;
   color: #ffffff;
-  flex: 0 0 27%;
-}
-.lab-case-highlights {
-  color: #cbc8ba;
-  font-size: 17px;
-  line-height: 1.35;
-  text-align: right;
-  flex: 0 0 18.5%;
-  padding-top: 14px;
-}
-.lab-case-hero-img {
-  width: 52.7%;
-  align-self: flex-end;
-  margin-left: auto;
-}
-.lab-case-scroll {
-  border-top: 1px solid rgba(255, 255, 255, 0.18);
-  color: #b6b3a6;
-  font-size: 14px;
-  padding: 8px 5.4% 20px;
 }
 
 /* ---------- sections ---------- */
@@ -266,7 +248,7 @@
   min-width: 0;
 }
 .lab-case-content {
-  padding: 70px 6% 90px;
+  padding: 70px 6% 40px; /* small bottom gap before the footer */
   max-width: 1160px;
   margin: 0 auto;
 }
@@ -440,6 +422,35 @@
 }
 .lab-case-images img {
   border: 1px solid #ececec;
+}
+
+/* stacked rows (Creative Direction / Structure / Testing): T1 heading with
+   all text left-aligned right underneath in R1 */
+.lab-case-row--stacked {
+  display: block;
+  max-width: 700px;
+}
+.lab-case-row--stacked > .lab-case-eyebrow {
+  margin-bottom: 12px;
+}
+.lab-case-row--stacked .lab-case-body + .lab-case-body {
+  margin-top: 14px;
+}
+/* images bound to the right column's width, stacked vertically */
+.lab-case-images--right {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  max-width: 525px;
+  margin-top: 24px;
+}
+.lab-case-images--right img {
+  width: 100%;
+  border: 1px solid #ececec;
+}
+/* very long page screenshots shown at half size inside pair columns */
+.lab-case-pair-col img.lab-img-half {
+  width: 50%;
 }
 
 /* paired columns (iterations) */

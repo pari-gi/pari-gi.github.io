@@ -585,14 +585,13 @@
   white-space: pre-line;
 }
 
-/* ASCII critter — Figtree 900, 16px, olive */
+/* ASCII critter — Figtree regular, 16px, olive */
 .lab-hero-critter {
-  left: 3.571vw;  /* 54px (moved left 10) */
-  top: 28.902vw;  /* 437px (moved up 35) */
+  left: 4.563vw;  /* 69px (shifted over 15) */
+  top: 28.902vw;  /* 437px */
   font-family: 'Figtree', system-ui, sans-serif;
-  font-weight: 900;
-  font-size: 1.058vw; /* 16px, up from 12.78 */
-  -webkit-text-stroke: 0.02em currentColor; /* thickens the strokes a touch */
+  font-weight: 400;
+  font-size: 1.058vw; /* 16px */
   line-height: 1;
   color: #717b08;
   white-space: pre;

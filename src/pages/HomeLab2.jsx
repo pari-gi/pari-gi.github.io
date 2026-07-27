@@ -1,82 +1,18 @@
-// SANDBOX COPY #2 of the home page (/home-lab2). Same hero + sticky ASCII
-// garden as /home-lab, but the case studies use the new V2 grid design
-// (Figma "NEW HOME PAGE V2", node 4:791; hover-expand from node 4:919):
-// a colored image banner that grows on hover, an Ibarra Real Nova title,
-// a grey role, a Figtree description, and dark-green pills.
+// The main home page (route: /). Hero + sticky ASCII garden, the V2
+// case-study grid (Figma "NEW HOME PAGE V2" 4:791, hover from 4:919),
+// custom cursor, and the shared FooterLab.
 import { useState, useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import AsciiGarden from '../components/AsciiGarden.jsx'
+import FooterLab from '../components/FooterLab.jsx'
 import hungieImg from '../assets/photos/v2-hungie.png'
 import appleImg from '../assets/photos/v2-applenj.png'
 import pitsImg from '../assets/photos/v2-pits.png'
-import footerBunny from '../assets/photos/v2-footer-bunny.png'
+import nsccImg from '../assets/photos/v2-nscc.png'
+import ccfImg from '../assets/photos/v2-ccf.png'
+import proavImg from '../assets/photos/v2-proav.png'
 import '../styles/home-lab.css'
 import '../styles/home-lab2.css'
-
-// ASCII grass strip (same as the case-study page dividers): grass baseline +
-// four flowers on stems; measures its own width so it fills the footer.
-function GrassDivider() {
-  const GREEN = '#6f9636'
-  const CHAR = 7.2 // Roboto Mono advance at 12px (~0.6em)
-  const grassTile = ['\\', '/', '\\', '/', '\\', '\\', '\\', '/', '/', '/', '/', '\\', '/', '\\', '/', '/']
-  const stem = '\\|/'
-  // repeat the same four flowers across the whole width (a flower every 22 cols)
-  const FLOWER_SET = [
-    { bloom: '(*)', color: '#c9d67a' },
-    { bloom: ' @ ', color: '#d1479a' },
-    { bloom: 'vvv', color: '#e2591f' },
-    { bloom: '’’’', color: '#e0629e' },
-  ]
-  const FLOWER_EVERY = 22
-  const ref = useRef(null)
-  const [cols, setCols] = useState(220)
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
-    const measure = () => setCols(Math.max(40, Math.floor(el.clientWidth / CHAR) + 3))
-    measure()
-    const ro = new ResizeObserver(measure)
-    ro.observe(el)
-    return () => ro.disconnect()
-  }, [])
-  const row2 = Array.from({ length: cols }, () => ({ ch: ' ', c: null }))
-  const row1 = Array.from({ length: cols }, () => ({ ch: ' ', c: null }))
-  let fi = 0
-  for (let at = 12; at < cols; at += FLOWER_EVERY) {
-    const f = FLOWER_SET[fi % FLOWER_SET.length]
-    fi += 1
-    for (let k = 0; k < 3; k++) {
-      const col = at - 1 + k
-      if (col < 0 || col >= cols) continue
-      if (f.bloom[k] !== ' ') row2[col] = { ch: f.bloom[k], c: f.color }
-      if (stem[k] !== ' ') row1[col] = { ch: stem[k], c: GREEN }
-    }
-  }
-  const grass = Array.from({ length: cols }, (_, i) => grassTile[i % grassTile.length]).join('')
-  const cellSpans = (cells) =>
-    cells.map((cell, i) => (
-      <span key={i} style={cell.c ? { color: cell.c } : undefined}>
-        {cell.ch}
-      </span>
-    ))
-  return (
-    <div className="lab2-grass" aria-hidden="true" ref={ref}>
-      <div className="lab2-grass-row">{cellSpans(row2)}</div>
-      <div className="lab2-grass-row">{cellSpans(row1)}</div>
-      <div className="lab2-grass-row">
-        <span style={{ color: GREEN }}>{grass}</span>
-      </div>
-    </div>
-  )
-}
-
-// footer ASCII art (Figma "NEW FOOTER" 11:998)
-const FOOTER_CAT = [
-  "  _._      _,- '\"\"`-._",
-  "(,-.  `._,'   (          |\\`-/|",
-  "      `-. -'   \\   )-`( ,o o)",
-  "                 `-       \\`_  `\"'-",
-].join('\n')
 
 // little flowers dropped along the mouse trail
 const TRAIL = ['✿', '❀', '✾', '❁', '✽', '❃', '✤']
@@ -88,14 +24,14 @@ const CRITTER = `      (@_
 <____)`
 
 const BIO =
-  'UMD Computer Science student turning messy problems into thoughtful products, especially where AI, design, and business overlap.'
+  'CS & Entrepreneurship @ UMD, turning messy problems into thoughtful products, especially where AI, design, and business overlap.'
 
 // V2 case-study cards (Figma group order, 2-col grid)
 const CARDS = [
   {
     title: 'Hungie',
     role: 'SOLO PRODUCT DESIGNER (FREELANCE)',
-    href: '/hungie-lab',
+    href: '/hungie',
     banner: '#ff9800',
     image: hungieImg,
     desc: 'Hungie’s entire value proposition depended on the credibility of its AI. When its algorithm felt arbitrary and unreliable, the product lost its usefulness, and its ability to retain users or succeed as a business.',
@@ -104,7 +40,7 @@ const CARDS = [
   {
     title: 'AppleNJ',
     role: 'PRODUCT DESIGNER INTERN',
-    href: '/applenj-lab',
+    href: '/applenj',
     banner: '#a1c9eb',
     image: appleImg,
     desc: 'AppleNJ was effectively invisible with ONLY ~5 visits a month. I helped rebuild the division from the ground up through a new business model, product strategy, brand, and digital experience.',
@@ -113,7 +49,7 @@ const CARDS = [
   {
     title: 'Princeton IT Services',
     role: 'PRODUCT DESIGN INTERN',
-    href: '/pits-lab',
+    href: '/pits',
     banner: '#6e87a6',
     image: pitsImg,
     desc: '70,000 monthly visitors, yet almost none converted. Redesigned the experience based around user research around conversion — surfacing all five divisions, clarifying the value proposition, and guiding users toward one focused CTA.',
@@ -123,28 +59,28 @@ const CARDS = [
     title: 'National School Climate Center',
     role: 'PRODUCT DESIGNER',
     href: '#',
-    banner: '#c9c9c9',
-    image: null,
+    banner: '#f59e1f',
+    image: nsccImg,
     desc: 'Brought in to audit and rescue an underperforming school climate platform. Overhauled the information architecture across 50+ screens, improved user flows to cut completion time in half, and designed a data dashboard.',
-    pills: ['HOLD', 'HOLD'],
+    pills: ['PRODUCT RESCUE', 'WORKFLOW OPTIMIZATION'],
   },
   {
     title: 'The Children’s Cancer Foundation',
     role: 'PRODUCT DESIGNER',
     href: '#',
-    banner: '#c9c9c9',
-    image: null,
+    banner: '#f0c567',
+    image: ccfImg,
     desc: 'Redesigned grant portal behind $1m+ in annual cancer research funding: streamlined three distinct user flows into one coherent system that cut 25 hours of review time and 5 hours for applicants.',
-    pills: ['HOLD', 'HOLD'],
+    pills: ['USER FLOW', 'INFORMATION ARCHITECTURE'],
   },
   {
     title: 'Princeton Pro AV',
     role: 'PRODUCT DESIGNER',
     href: '#',
-    banner: '#c9c9c9',
-    image: null,
+    banner: '#d7dde9',
+    image: proavImg,
     desc: 'hold',
-    pills: ['HOLD', 'HOLD'],
+    pills: ['160+ WIREFRAMINGS', 'MARKET + PRODUCT RESEARCH'],
   },
 ]
 
@@ -171,7 +107,8 @@ export default function HomeLab2() {
   }
 
   // custom cursor: an olive circle that follows the mouse and expands into a
-  // pill when hovering a case study ('view') or a coming-soon card ('soon')
+  // pill when hovering a case study ('view'), a coming-soon card ('soon'),
+  // or the footer ('footer' — the brown cat the orange cat chases)
   const cursorRef = useRef(null)
   const [cursorMode, setCursorMode] = useState('default')
   useEffect(() => {
@@ -185,24 +122,6 @@ export default function HomeLab2() {
     window.addEventListener('mousemove', move)
     return () => window.removeEventListener('mousemove', move)
   }, [])
-
-  // footer: the orange cat chases the mouse (jumps onto the cursor)
-  const footerRef = useRef(null)
-  const catRef = useRef(null)
-  const chaseCat = (e) => {
-    const footer = footerRef.current
-    const cat = catRef.current
-    if (!footer || !cat) return
-    const fr = footer.getBoundingClientRect()
-    const mx = e.clientX - fr.left
-    const my = e.clientY - fr.top
-    const homeCx = cat.offsetLeft + cat.offsetWidth / 2
-    const homeCy = cat.offsetTop + cat.offsetHeight / 2
-    cat.style.transform = `translate(${Math.round(mx - homeCx)}px, ${Math.round(my - homeCy)}px)`
-  }
-  const restCat = () => {
-    if (catRef.current) catRef.current.style.transform = 'translate(0, 0)'
-  }
 
   return (
     <main className="lab2-page">
@@ -219,12 +138,12 @@ export default function HomeLab2() {
       <section className="lab-hero">
         <nav className="lab-hero-nav">
           <a href="#work">WORK</a>
-          <a href="/#me">ME</a>
+          <Link to="/miscellany">ME</Link>
           <a href="/resume.pdf">RESUME</a>
           <a href="https://www.linkedin.com/in/pari-gill/">LINKEDIN</a>
           <Link to="/miscellany">MISCELLANY</Link>
         </nav>
-        <p className="lab-hero-available">AVAIBLE FOR FREELANCE</p>
+        <p className="lab-hero-available">AVAILABLE FOR FREELANCE</p>
         <p className="lab-hero-tagline">Great design turns information into experience</p>
         <h1 className="lab-hero-wordmark">Pari Gill</h1>
         <p className="lab-hero-bio">{BIO}</p>
@@ -273,34 +192,10 @@ export default function HomeLab2() {
         </div>
       </section>
 
-      <footer
-        className="lab2-footer"
-        ref={footerRef}
-        onMouseEnter={() => setCursorMode('footer')}
-        onMouseMove={chaseCat}
-        onMouseLeave={() => {
-          setCursorMode('default')
-          restCat()
-        }}
-      >
-        <p className="lab2-foot-quote">{'when life gives you lemons\nmake apple juice'}</p>
-        <pre className="lab2-foot-cat" ref={catRef} aria-hidden="true">{FOOTER_CAT}</pre>
-        <div className="lab2-foot-menu">
-          <p className="lab2-foot-col-title">[MENU]</p>
-          <a href="#work">WORK</a>
-          <a href="/#me">ME!</a>
-          <Link to="/miscellany">MISCELLANY</Link>
-        </div>
-        <div className="lab2-foot-contact">
-          <p className="lab2-foot-col-title">[CONTACT]</p>
-          <a href="/resume.pdf">RESUME</a>
-          <a href="https://www.linkedin.com/in/pari-gill/">LINKEDIN</a>
-        </div>
-        <img className="lab2-foot-bunny" src={footerBunny} alt="" />
-        <div className="lab2-foot-band">
-          <GrassDivider />
-        </div>
-      </footer>
+      <FooterLab
+        onCursorEnter={() => setCursorMode('footer')}
+        onCursorLeave={() => setCursorMode('default')}
+      />
     </main>
   )
 }

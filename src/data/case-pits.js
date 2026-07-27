@@ -1,9 +1,9 @@
 import heroFinal from '../assets/photos/image_105__66d2f9be.jpg'
 import originalSite from '../assets/photos/image_91__0913c1c4.jpg'
 import heatmapOld from '../assets/photos/image_86__7b20efd4.jpg'
-import sketch1 from '../assets/photos/IMG_1902_2__f2cc4d6c.jpg'
-import sketch2 from '../assets/photos/IMG_1904_2__6ab1f512.jpg'
-import sketch3 from '../assets/photos/IMG_1903_2__f7359383.jpg'
+import sketch1 from '../assets/photos/pits-sketch1-cropped.jpg'
+import sketch2 from '../assets/photos/pits-sketch2-cropped.jpg'
+import sketch3 from '../assets/photos/pits-sketch3-cropped.jpg'
 import iter1Mine from '../assets/photos/image_104__6369c883.jpg'
 import iter1CoA from '../assets/photos/image_105__ee1b3ca3.jpg'
 import iter1CoB from '../assets/photos/image_104__2ca0cfa4.jpg'
@@ -94,12 +94,14 @@ export default {
         {
           eyebrow: 'The original design:',
           body: 'A tile layout with a rotating carousel on the left and subdivision logo tiles on the right. No unified headline. No clear hierarchy. Competing focal points fighting for attention.',
-          images: [{ src: originalSite, w: 471, alt: 'The original Princeton IT Services hero' }],
+          imagesRight: true,
+          images: [{ src: originalSite, alt: 'The original Princeton IT Services hero' }],
         },
         {
           eyebrow: 'Heatmap Analysis:',
           body: 'The Attention Insight predictive heatmap exposed a critical attention distribution failure across every relevant zone.',
-          images: [{ src: heatmapOld, w: 940, alt: 'Predictive heatmap of the original hero' }],
+          imagesRight: true,
+          images: [{ src: heatmapOld, alt: 'Predictive heatmap of the original hero' }],
         },
         {
           pair: [
@@ -135,10 +137,11 @@ export default {
           eyebrow: 'Ideation session with Leadership:',
           statement: 'No polished decks, just sketches, rapid concept generation, and real time stakeholder input shaping the direction.',
           body: "Seven distinct layout concepts explored on paper, each addressing the same core tension: how do you surface five subdivision destinations without sacrificing the hero's primary job of establishing PITS's brand identity?",
+          imagesRight: true,
           images: [
-            { src: sketch1, w: 340, alt: 'Ideation sketch 1' },
-            { src: sketch2, w: 340, alt: 'Ideation sketch 2' },
-            { src: sketch3, w: 340, alt: 'Ideation sketch 3' },
+            { src: sketch1, alt: 'Ideation sketch 1' },
+            { src: sketch2, alt: 'Ideation sketch 2' },
+            { src: sketch3, alt: 'Ideation sketch 3' },
           ],
         },
         {
@@ -166,15 +169,17 @@ export default {
           eyebrow: 'My Direction — Subdivision Visibility',
           statement: 'Speed over depth. Show all five subdivisions and a conversion path right away — no scrolling, no clicking, so visitors act before they leave.',
           body: 'A dark, immersive hero anchored by a bold headline and clear value proposition. Service category tags positioned for scannability. Single CTA. Clean. Directed.\n\nBelow the hero: horizontal flip cards with all five subdivisions — no scroll required, no interaction barrier between a visitor and a conversion path.',
-          images: [{ src: iter1Mine, w: 571, alt: 'My iteration 1 direction' }],
+          imagesRight: true,
+          images: [{ src: iter1Mine, alt: 'My iteration 1 direction' }],
         },
         {
           eyebrow: "Co-Intern's Direction — Content Rich Divisions",
           statement: 'Depth over speed. Give each subdivision room to explain itself. Visitors leave understanding each business line completely.',
           body: 'A lighter hero featuring the brand name and three punchy descriptors. Subdivision logos presented as a scrolling row beneath the hero.\n\nThe main feature to showcase the subdivisions was an expandable stacked cards section. On hover, each card will provide full context on the division and the services it provides.',
+          imagesRight: true,
           images: [
-            { src: iter1CoA, w: 423, alt: "Co-intern's direction, screen 1" },
-            { src: iter1CoB, w: 495, alt: "Co-intern's direction, screen 2" },
+            { src: iter1CoA, alt: "Co-intern's direction, screen 1" },
+            { src: iter1CoB, alt: "Co-intern's direction, screen 2" },
           ],
         },
         {
@@ -204,7 +209,8 @@ export default {
         {
           eyebrow: 'ITERATION 2',
           statement: 'Following C-suite feedback, both interns merged their strongest elements into a single unified direction. I refined the hero. The other intern rebuilt the card section with expanded division content.',
-          images: [{ src: iter2, w: 441, alt: 'Iteration 2 merged design' }],
+          imagesRight: true,
+          images: [{ src: iter2, alt: 'Iteration 2 merged design' }],
         },
         {
           pair: [
@@ -227,9 +233,10 @@ export default {
           eyebrow: 'ITERATION 3',
           statement: 'The visual mismatch had one clear fix: rebuild the card section in a dark aesthetic that matched the hero.',
           body: "Cards were rebuilt with a dark theme. The visual language now flowed from hero to card section without a jarring seam. The logo bar between the hero and cards added a transitional element that helped bridge the two zones.\n\nTwo variants produced. I produced the one on the left, one that was more consistent with the old website. My co-intern produced the one on the right, one that tied in with the hero.\n\nC-suite approved the first design. Dark aesthetic solved the mismatch problem. We handed off the designs to the developer.",
+          imagesRight: true,
           images: [
-            { src: iter3A, w: 492, alt: 'Iteration 3, variant 1' },
-            { src: iter3B, w: 477, alt: 'Iteration 3, variant 2' },
+            { src: iter3A, alt: 'Iteration 3, variant 1' },
+            { src: iter3B, alt: 'Iteration 3, variant 2' },
           ],
         },
         {
@@ -241,9 +248,10 @@ export default {
           eyebrow: 'ITERATION 4',
           statement: 'The new design incorporated five cards displayed simultaneously above the fold. No sticky scroll. No sequential reveal. All five divisions visible, labeled, and clickable the moment a visitor lands.',
           body: 'Both designs (iteration 3 and iteration 4) were developed!',
+          imagesRight: true,
           images: [
-            { src: iter4, w: 656, alt: 'Iteration 4 final design' },
-            { src: iter4b, w: 656, alt: 'Iteration 4 detail' },
+            { src: iter4, alt: 'Iteration 4 final design' },
+            { src: iter4b, alt: 'Iteration 4 detail' },
           ],
         },
       ],

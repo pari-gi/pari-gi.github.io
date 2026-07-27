@@ -11,9 +11,9 @@ import remaining1 from '../assets/photos/image_83__47360e8a.jpg'
 import remaining2 from '../assets/photos/image_84__96d2c1ec.jpg'
 import mindMap from '../assets/photos/image_81__96b8566f.jpg'
 import featureBench from '../assets/photos/image_81__e50c1939.jpg'
-import logoBrainstorm from '../assets/photos/image_79__ba978740.jpg'
-import colorExplore from '../assets/photos/image_79__5ec66f79.jpg'
-import colorFinal from '../assets/photos/image_79__a1571719.jpg'
+import logoBrainstorm from '../assets/photos/logo-brainstorm-cropped.jpg'
+import colorExplore from '../assets/photos/color-explore-cropped.jpg'
+import colorFinal from '../assets/photos/color-final-cropped.jpg'
 import typeSpec from '../assets/photos/image_80__324d0cf8.jpg'
 import spacingSpec from '../assets/photos/image_79__448f902f.jpg'
 import moodboard from '../assets/photos/image_79__52d7735e.jpg'
@@ -188,6 +188,7 @@ export default {
     {
       title: 'Creative Direction',
       heading: 'Creative Direction',
+      stacked: true,
       rows: [
         {
           eyebrow: 'Brand Name & Logo:',
@@ -224,6 +225,7 @@ export default {
     {
       title: 'Structure',
       heading: 'Structure',
+      stacked: true,
       intro: "I shifted to defining the product's architecture — scoping every page, mapping user flows to conversion paths, and benchmarking features against real world references.",
       rows: [
         {
@@ -254,11 +256,13 @@ export default {
               eyebrow: 'Iteration 1:',
               body: 'I brought the vintage, black and white direction from the mood board to life with textured backgrounds, retro typography, creative visual accents.\n\nOn the mood board it felt distinctive and premium. In execution, it clashed with everything the site needed to do.\n\nThe creative styling competed with Apple\'s product imagery. The vintage tone undermined enterprise credibility — a Fortune 10 IT director evaluating vendors doesn\'t want to feel like they\'re browsing a boutique.\n\nThe C-suite agreed, and the feedback was immediate: "go full modern".',
               image: iter1,
+              half: true,
             },
             {
               eyebrow: 'Iteration 2:',
               body: 'The C-suite was rattled by how far the retro direction strayed from what they had seen on other B2B sites. The feedback was: dark backgrounds, prominent Apple imagery, structured layout, no creative risk.\n\nI followed the instruction exactly: dark hero, grey and white modern features. Bright blue accents. No creativity.\n\nBut it was a page built from fear that creativity would land the wrong way, not strategy — and it showed. Visually indistinguishable from every generic IT services template already in the market.',
               image: iter2,
+              half: true,
             },
           ],
         },
@@ -268,11 +272,13 @@ export default {
               eyebrow: 'Iteration 3 & 4:',
               body: "Same structural foundation as iteration 2 — but I was trying to make a direction I didn't believe in work.\n\nI tested dark vs. light backgrounds, experimented with different container shapes, adjusted section ordering. The harder I pushed it, the more it looked like a polished version of the exact site we were trying to replace. Same approach that made apple.tech365.io invisible in the first place.\n\nC-suite was adamant so I kept the “modern” look, but the design was fighting itself.",
               image: iter3,
+              half: true,
             },
             {
               eyebrow: 'Iteration 5:',
               body: "I asked C-suite for one day. Just trust me.\n\nI went back to iteration 1 & the moodboard and studied it piece by piece. We knew what made it creative, but why didn't it work for our design?\n\nThe retro textures, the vintage accents, that was all noise. But underneath it there was a confidence, a sense of brand ownership, different from every other reseller site. That was worth saving.\n\nI stripped away everything that didn't serve the enterprise buyer and rebuilt around what did.\n\nThis was the design that I presented to the C-suite. They saw it and decided this was the direction.",
               image: iter5,
+              half: true,
             },
           ],
         },
@@ -281,6 +287,7 @@ export default {
     {
       title: 'Testing & Validation',
       heading: 'Testing & Validation',
+      stacked: true,
       intro: 'Every design decision was tested with real users before handoff.\nUsed 5 different testing methods.',
       rows: [
         {
@@ -323,8 +330,8 @@ export default {
         },
         {
           pair: [
-            { eyebrow: 'Before', image: beforeSite },
-            { eyebrow: 'After', image: afterSite },
+            { eyebrow: 'Before', image: beforeSite, half: true },
+            { eyebrow: 'After', image: afterSite, half: true },
           ],
         },
         {

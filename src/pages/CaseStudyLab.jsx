@@ -8,6 +8,7 @@ import pits from '../data/case-pits.js'
 import hungie from '../data/case-hungie.js'
 import RICH from '../data/rich-text.js'
 import AsciiGarden from '../components/AsciiGarden.jsx'
+import FooterLab from '../components/FooterLab.jsx'
 import '../styles/case-lab.css'
 
 const CASES = { applenj, pits, hungie }
@@ -21,7 +22,7 @@ function Rich({ text }) {
   return <>{parts.map((p, i) => (i % 2 ? <strong key={i}>{p}</strong> : p))}</>
 }
 
-function Row({ row }) {
+function Row({ row, stacked }) {
   if (row.pair) {
     return (
       <div className="lab-case-row lab-case-row--pair">
@@ -29,9 +30,37 @@ function Row({ row }) {
           <div key={i} className="lab-case-pair-col">
             {col.eyebrow && <p className="lab-case-eyebrow">{col.eyebrow}</p>}
             {col.body && <p className="lab-case-body"><Rich text={col.body} /></p>}
-            {col.image && <img src={col.image} alt={col.eyebrow || ''} />}
+            {col.image && (
+              <img src={col.image} alt={col.eyebrow || ''} className={col.half ? 'lab-img-half' : undefined} />
+            )}
           </div>
         ))}
+      </div>
+    )
+  }
+  // images bound to the right column's width, stacked vertically
+  const rightImages = row.images && (
+    <div className="lab-case-images lab-case-images--right">
+      {row.images.map((img, i) => (
+        <img key={i} src={img.src} alt={img.alt || ''} />
+      ))}
+    </div>
+  )
+  if (stacked) {
+    // single-column layout: T1 heading, then everything left-aligned in R1
+    return (
+      <div className="lab-case-row lab-case-row--stacked">
+        {row.eyebrow && <p className="lab-case-eyebrow">{row.eyebrow}</p>}
+        {row.statement && <p className="lab-case-body"><Rich text={row.statement} /></p>}
+        {row.body && <p className="lab-case-body"><Rich text={row.body} /></p>}
+        {row.list && (
+          <ol className="lab-case-body lab-case-olist">
+            {row.list.map((item, i) => (
+              <li key={i}><Rich text={item} /></li>
+            ))}
+          </ol>
+        )}
+        {rightImages}
       </div>
     )
   }
@@ -50,8 +79,9 @@ function Row({ row }) {
             ))}
           </ol>
         )}
+        {row.imagesRight && rightImages}
       </div>
-      {row.images && (
+      {!row.imagesRight && row.images && (
         <div className="lab-case-images">
           {row.images.map((img, i) => (
             <img key={i} src={img.src} alt={img.alt || ''} style={img.w ? { width: `${(img.w / 1032) * 100}%` } : undefined} />
@@ -187,7 +217,7 @@ function Section({ section, num }) {
           {section.heading && <h3 className="lab-case-heading">{section.heading}</h3>}
           {section.intro && <p className="lab-case-intro"><Rich text={section.intro} /></p>}
           {section.rows.map((row, i) => (
-            <Row key={i} row={row} />
+            <Row key={i} row={row} stacked={section.stacked} />
           ))}
         </div>
       )}
@@ -224,7 +254,7 @@ export default function CaseStudyLab({ slug }) {
       <div className="lab-case-shell">
         <aside className="lab-case-nav">
           <div className="lab-case-nav-inner">
-            <Link to="/home-lab" className="lab-case-nav-home">
+            <Link to="/" className="lab-case-nav-home">
               <span aria-hidden="true">←</span> Home
             </Link>
             <nav className="lab-case-nav-list">
@@ -245,8 +275,8 @@ export default function CaseStudyLab({ slug }) {
 
         <div className="lab-case-main">
           <nav className="lab-case-topnav">
-            <Link to="/home-lab">WORK</Link>
-            <Link to="/home-lab">ME</Link>
+            <Link to="/">WORK</Link>
+            <Link to="/miscellany">ME</Link>
             <a href="/resume.pdf">RESUME</a>
             <a href="https://www.linkedin.com/in/pari-gill/">LINKEDIN</a>
             <Link to="/miscellany">MISCELLANY</Link>
@@ -255,13 +285,9 @@ export default function CaseStudyLab({ slug }) {
             <div className="lab-case-hero-bg" aria-hidden="true">
               <AsciiGarden />
             </div>
-            <p className="lab-case-role">{data.role}</p>
             <div className="lab-case-hero-inner">
               <h1 className="lab-case-title">{data.name}</h1>
-              <p className="lab-case-highlights">
-                {data.heroHighlights.map((h, i) => (h ? <span key={i}>{h}<br /></span> : <br key={i} />))}
-              </p>
-              <img className="lab-case-hero-img" src={data.heroImage} alt={`${data.name} final design`} />
+              <p className="lab-case-role">{data.role}</p>
             </div>
           </div>
 
@@ -275,6 +301,7 @@ export default function CaseStudyLab({ slug }) {
           </div>
         </div>
       </div>
+      <FooterLab />
     </main>
   )
 }
