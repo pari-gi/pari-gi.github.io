@@ -152,7 +152,7 @@ export default function HomeLab2() {
 
       <section className="lab-work-track" id="work">
         <div className="lab-field lab-work-bg" ref={fieldRef} onMouseMove={handleMove}>
-          <AsciiGarden />
+          <AsciiGarden cover />
           {trail.map((f) => (
             <span key={f.id} className="lab-trail-flower" style={{ left: f.x, top: f.y, color: f.color }} aria-hidden="true">
               {f.char}

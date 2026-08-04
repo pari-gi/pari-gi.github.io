@@ -19,7 +19,11 @@ const ROWS = art.lines.map((runs, r) => (
   </div>
 ))
 
-export default function AsciiGarden() {
+// cover: fill the container's height as well as its width (used behind the
+// sticky work section, whose box is taller than the art). Any excess width is
+// cropped evenly from both sides. Without it the art only fits the width and
+// the container's own background shows through underneath.
+export default function AsciiGarden({ cover = false }) {
   const ref = useRef(null)
 
   useEffect(() => {
@@ -33,9 +37,18 @@ export default function AsciiGarden() {
       el.style.setProperty('--ag-fs', '100px')
       const measured = row.scrollWidth
       if (!measured) return
-      const size = (width / measured) * 100
+      let size = (width / measured) * 100
+      if (cover) {
+        // grow until the art also covers the container's height
+        const heightAt100 = art.rows * LINE_HEIGHT * 100
+        size = Math.max(size, (el.clientHeight / heightAt100) * 100)
+      }
       el.style.setProperty('--ag-fs', `${size}px`)
-      const host = el.parentElement
+      // centre the art when covering makes it wider than the container
+      const overflow = Math.max(0, (measured * size) / 100 - width)
+      el.style.setProperty('--ag-shift', `${-overflow / 2}px`)
+      // in cover mode the container sets its own height; don't drive it
+      const host = cover ? null : el.parentElement
       if (host) host.style.setProperty('--ag-h', `${art.rows * LINE_HEIGHT * size}px`)
     }
     fit()
@@ -44,7 +57,7 @@ export default function AsciiGarden() {
     const ro = new ResizeObserver(fit)
     ro.observe(el)
     return () => ro.disconnect()
-  }, [])
+  }, [cover])
 
   return <div className="ascii-garden" aria-hidden="true" ref={ref}>{ROWS}</div>
 }

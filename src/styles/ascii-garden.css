@@ -15,5 +15,6 @@
 }
 .ag-row {
   white-space: pre;
+  margin-left: var(--ag-shift, 0);
   height: calc(var(--ag-fs) * 1.05);
 }
