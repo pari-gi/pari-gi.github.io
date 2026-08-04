@@ -3,7 +3,6 @@ import { useState } from 'react'
 import { CANVAS, COLLAGE } from '../data/miscellany.js'
 import CustomCursor from '../components/CustomCursor.jsx'
 import FooterLab from '../components/FooterLab.jsx'
-import wordmark from '../assets/svg/wordmark.svg'
 import '../styles/miscellany.css'
 
 const pctX = (v) => `${(v / CANVAS.w) * 100}%`
@@ -64,7 +63,7 @@ export default function Miscellany() {
       <CustomCursor mode={cursorMode} label={cursorLabel} />
       <header className="misc-header">
         <Link to="/" aria-label="Pari Gill — home">
-          <span className="misc-wordmark" style={{ '--wm': `url(${wordmark})` }} />
+          <span className="misc-wordmark" />
         </Link>
         <nav className="misc-nav">
           <Link to="/">WORK</Link>

@@ -75,21 +75,57 @@ function GrassDivider() {
 export default function FooterLab({ onCursorEnter, onCursorLeave }) {
   const footerRef = useRef(null)
   const catRef = useRef(null)
-  // the cat chases the mouse: trails to the LEFT of the cursor, and the slow
-  // transition (see .lab2-foot-cat) gives it a laggy, never-quite-catches feel
+  // The cat chases the mouse on a rAF loop rather than a CSS transition:
+  // re-triggering a transition on every mousemove is what made it stutter.
+  // Each frame it eases a fraction of the way toward the pointer, so it
+  // trails smoothly and never quite catches up.
+  const target = useRef({ x: 0, y: 0 })
+  const pos = useRef({ x: 0, y: 0 })
+  const raf = useRef(null)
+  const chasing = useRef(false)
+
+  useEffect(() => () => cancelAnimationFrame(raf.current), [])
+
+  const tick = () => {
+    const cat = catRef.current
+    if (!cat) return
+    const p = pos.current
+    const t = target.current
+    p.x += (t.x - p.x) * 0.075
+    p.y += (t.y - p.y) * 0.075
+    cat.style.transform = `translate(${p.x.toFixed(1)}px, ${p.y.toFixed(1)}px)`
+    const settled = Math.abs(t.x - p.x) < 0.4 && Math.abs(t.y - p.y) < 0.4
+    if (!chasing.current && settled) {
+      raf.current = null
+      return
+    }
+    raf.current = requestAnimationFrame(tick)
+  }
+
+  const start = () => {
+    chasing.current = true
+    if (!raf.current) raf.current = requestAnimationFrame(tick)
+  }
+
   const chaseCat = (e) => {
     const footer = footerRef.current
     const cat = catRef.current
     if (!footer || !cat) return
     const fr = footer.getBoundingClientRect()
-    const mx = e.clientX - fr.left - 150 // sit ~150px left of the cursor
-    const my = e.clientY - fr.top
     const homeCx = cat.offsetLeft + cat.offsetWidth / 2
     const homeCy = cat.offsetTop + cat.offsetHeight / 2
-    cat.style.transform = `translate(${Math.round(mx - homeCx)}px, ${Math.round(my - homeCy)}px)`
+    // sit ~150px to the left of the cursor
+    target.current = {
+      x: e.clientX - fr.left - 150 - homeCx,
+      y: e.clientY - fr.top - homeCy,
+    }
+    start()
   }
+
   const restCat = () => {
-    if (catRef.current) catRef.current.style.transform = 'translate(0, 0)'
+    chasing.current = false
+    target.current = { x: 0, y: 0 }
+    if (!raf.current) raf.current = requestAnimationFrame(tick)
   }
 
   return (
@@ -115,6 +151,7 @@ export default function FooterLab({ onCursorEnter, onCursorLeave }) {
         <p className="lab2-foot-col-title">[CONTACT]</p>
         <a href="/resume.pdf">RESUME</a>
         <a href="https://www.linkedin.com/in/pari-gill/">LINKEDIN</a>
+        <a href="mailto:pari.r.gill@gmail.com">EMAIL</a>
       </div>
       <img className="lab2-foot-bunny" src={footerBunny} alt="" />
       <div className="lab2-foot-band">

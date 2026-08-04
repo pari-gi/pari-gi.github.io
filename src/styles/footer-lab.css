@@ -33,7 +33,6 @@
   line-height: 1.1;
   color: #f36c26;
   white-space: pre;
-  transition: transform 1.3s cubic-bezier(0.16, 0.9, 0.25, 1) 0.12s;
   will-change: transform;
 }
 /* [MENU] / [CONTACT] columns — IBM Plex Mono 12px, dark green */
@@ -93,4 +92,19 @@
 }
 .lab2-grass-row {
   display: block;
+}
+
+/* the bunny hops every 15s — two small bounces, then it sits still again */
+@keyframes bunny-hop {
+  0%, 90%, 100% { transform: translateY(0); }
+  92% { transform: translateY(-12px); }
+  94% { transform: translateY(0); }
+  96% { transform: translateY(-7px); }
+  98% { transform: translateY(0); }
+}
+.lab2-foot-bunny {
+  animation: bunny-hop 15s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .lab2-foot-bunny { animation: none; }
 }

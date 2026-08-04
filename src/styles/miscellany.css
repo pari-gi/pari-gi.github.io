@@ -84,15 +84,17 @@
   z-index: 2;
   padding: 30px 0 24px;
 }
-/* the wordmark SVG is olive; mask it so the fill is exactly dark green */
+/* the wordmark SVG is olive; mask it so the fill is exactly dark green.
+   The url lives here, not in an inline style: the build inlines this SVG as a
+   data: URI, and those quotes/commas break CSS parsing inside a style attribute. */
 .misc-wordmark {
   display: block;
   width: 100%;
   max-width: 1315px;
   aspect-ratio: 1315 / 83;
   background-color: #152712;
-  -webkit-mask: var(--wm) center / contain no-repeat;
-  mask: var(--wm) center / contain no-repeat;
+  -webkit-mask: url('../assets/svg/wordmark.svg') center / contain no-repeat;
+  mask: url('../assets/svg/wordmark.svg') center / contain no-repeat;
 }
 /* same treatment as the home hero nav */
 .misc-nav {
