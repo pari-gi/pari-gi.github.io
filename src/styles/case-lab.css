@@ -248,7 +248,7 @@
   min-width: 0;
 }
 .lab-case-content {
-  padding: 70px 6% 40px; /* small bottom gap before the footer */
+  padding: 70px 6% 190px; /* 40px gap + 150px white space before the footer */
   max-width: 1160px;
   margin: 0 auto;
 }
@@ -257,7 +257,7 @@
 /* ASCII garden strip between sections: flowers on stems + grass + one chick */
 .lab-case-divider {
   font-family: 'Roboto Mono', ui-monospace, monospace;
-  font-size: 15px;
+  font-size: 12px;
   font-weight: 400;
   line-height: 1.02;
   white-space: pre;

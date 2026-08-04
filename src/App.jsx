@@ -1,7 +1,6 @@
 import { Routes, Route, useLocation } from 'react-router-dom'
 import Nav from './components/Nav.jsx'
 import Footer from './components/Footer.jsx'
-import FooterLab from './components/FooterLab.jsx'
 import ScrollManager from './components/ScrollManager.jsx'
 import Landing from './pages/Landing.jsx'
 import Miscellany from './pages/Miscellany.jsx'
@@ -16,14 +15,12 @@ import './styles/type.css'
 export default function App() {
   const { pathname } = useLocation()
   // archived pages (URL-only, personal reference) keep the old chrome intact;
-  // miscellany keeps the old nav but gets the new shared footer;
   // every other page renders its own chrome (nav + FooterLab inside the page)
   const isArchive = pathname.startsWith('/archive')
-  const isMiscellany = pathname === '/miscellany'
   return (
     <div className="page">
       <ScrollManager />
-      {(isArchive || isMiscellany) && <Nav />}
+      {isArchive && <Nav />}
       <Routes>
         {/* main site */}
         <Route path="/" element={<HomeLab2 />} />
@@ -46,7 +43,6 @@ export default function App() {
         <Route path="*" element={<HomeLab2 />} />
       </Routes>
       {isArchive && <Footer />}
-      {isMiscellany && <FooterLab />}
     </div>
   )
 }

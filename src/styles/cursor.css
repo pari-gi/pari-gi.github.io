@@ -1,0 +1,59 @@
+/* ---------- custom cursor: olive circle everywhere, expands into a
+   pill on case-study hover (Figma "3 states") ---------- */
+.lab2-page,
+.lab2-page *,
+.has-cursor,
+.has-cursor * {
+  cursor: none !important;
+}
+.lab2-cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  transform: translate(-50%, -50%);
+  height: 25px;
+  width: 25px;
+  border-radius: 12.5px;
+  background: #717b08;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 10000;
+  transition: width 0.45s cubic-bezier(0.33, 0, 0.2, 1);
+}
+.lab2-cursor-text {
+  flex: none; /* keep natural width so the pill can measure it */
+  font-family: 'Figtree', system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: 0.01em;
+  color: #f1efd8;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+/* text width (103 / 83 at 14px Figtree) + 10px on each side */
+.lab2-cursor--view { width: 123px; }
+.lab2-cursor--soon { width: 103px; }
+.lab2-cursor--view .lab2-cursor-text,
+.lab2-cursor--soon .lab2-cursor-text,
+.lab2-cursor--label .lab2-cursor-text {
+  opacity: 1;
+}
+
+/* cursor over the footer: brown cat text, no pill */
+.lab2-cursor--footer {
+  width: auto;
+  min-width: 0;
+  height: auto;
+  background: transparent;
+  overflow: visible;
+}
+.lab2-cursor--footer .lab2-cursor-text {
+  opacity: 1;
+  color: #965116;
+  font-weight: 700;
+  white-space: nowrap;
+}

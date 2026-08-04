@@ -9,6 +9,7 @@ import hungie from '../data/case-hungie.js'
 import RICH from '../data/rich-text.js'
 import AsciiGarden from '../components/AsciiGarden.jsx'
 import FooterLab from '../components/FooterLab.jsx'
+import CustomCursor from '../components/CustomCursor.jsx'
 import '../styles/case-lab.css'
 
 const CASES = { applenj, pits, hungie }
@@ -126,7 +127,7 @@ function OverviewGrid({ section }) {
 // land at fixed fractions across it (never clipped at the edges).
 function CaseDivider() {
   const GREEN = '#6f9636' // grass + stems
-  const CHAR = 9 // Roboto Mono advance width at 15px (~0.6em)
+  const CHAR = 7.2 // Roboto Mono advance width at 12px (~0.6em)
   const grassTile = ['\\', '/', '\\', '/', '\\', '\\', '\\', '/', '/', '/', '/', '\\', '/', '\\', '/', '/']
   const stem = '\\|/'
   // four blooms, spread at fractions of the full width
@@ -228,6 +229,7 @@ function Section({ section, num }) {
 export default function CaseStudyLab({ slug }) {
   const data = CASES[slug]
   const [active, setActive] = useState(0)
+  const [cursorMode, setCursorMode] = useState('default')
 
   // scroll-spy: highlight the section currently in view
   useEffect(() => {
@@ -250,7 +252,8 @@ export default function CaseStudyLab({ slug }) {
     document.getElementById(`s${i}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
 
   return (
-    <main className="lab-case">
+    <main className="lab-case has-cursor">
+      <CustomCursor mode={cursorMode} />
       <div className="lab-case-shell">
         <aside className="lab-case-nav">
           <div className="lab-case-nav-inner">
@@ -301,7 +304,10 @@ export default function CaseStudyLab({ slug }) {
           </div>
         </div>
       </div>
-      <FooterLab />
+      <FooterLab
+        onCursorEnter={() => setCursorMode('footer')}
+        onCursorLeave={() => setCursorMode('default')}
+      />
     </main>
   )
 }

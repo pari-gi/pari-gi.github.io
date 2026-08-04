@@ -1,10 +1,11 @@
 // The main home page (route: /). Hero + sticky ASCII garden, the V2
 // case-study grid (Figma "NEW HOME PAGE V2" 4:791, hover from 4:919),
 // custom cursor, and the shared FooterLab.
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import AsciiGarden from '../components/AsciiGarden.jsx'
 import FooterLab from '../components/FooterLab.jsx'
+import CustomCursor from '../components/CustomCursor.jsx'
 import hungieImg from '../assets/photos/v2-hungie.png'
 import appleImg from '../assets/photos/v2-applenj.png'
 import pitsImg from '../assets/photos/v2-pits.png'
@@ -109,31 +110,11 @@ export default function HomeLab2() {
   // custom cursor: an olive circle that follows the mouse and expands into a
   // pill when hovering a case study ('view'), a coming-soon card ('soon'),
   // or the footer ('footer' — the brown cat the orange cat chases)
-  const cursorRef = useRef(null)
   const [cursorMode, setCursorMode] = useState('default')
-  useEffect(() => {
-    const move = (e) => {
-      const el = cursorRef.current
-      if (el) {
-        el.style.left = `${e.clientX}px`
-        el.style.top = `${e.clientY}px`
-      }
-    }
-    window.addEventListener('mousemove', move)
-    return () => window.removeEventListener('mousemove', move)
-  }, [])
 
   return (
     <main className="lab2-page">
-      <div ref={cursorRef} className={`lab2-cursor lab2-cursor--${cursorMode}`} aria-hidden="true">
-        <span className="lab2-cursor-text">
-          {cursorMode === 'footer'
-            ? '~~( ε :>'
-            : cursorMode === 'soon'
-              ? 'ʚїɞ    coming soon'
-              : '<:3 )~~    view case study'}
-        </span>
-      </div>
+      <CustomCursor mode={cursorMode} />
 
       <section className="lab-hero">
         <nav className="lab-hero-nav">

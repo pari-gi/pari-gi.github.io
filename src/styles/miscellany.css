@@ -1,14 +1,14 @@
 .misc-canvas {
   position: relative;
   /* 1.25x the column width, centered, so the whole collage scales up together */
-  width: 125%;
-  margin-left: -12.5%;
+  width: 106.25%; /* 15% smaller than the old 125% */
+  margin-left: -3.125%;
   aspect-ratio: 1514 / 2028;
   /* the collage's own top whitespace puts the first photos ~332px down;
      pull it up so they start 100px below the nav */
-  margin-top: -232px;
+  margin-top: -257px;
   /* likewise trim the frame's built-in bottom whitespace: last photo → footer = 175px */
-  margin-bottom: -242px;
+  margin-bottom: -56px; /* trim, then 150px of air before the footer */
 }
 
 @media (max-width: 900px) {
@@ -23,7 +23,9 @@
 .misc-photo {
   position: absolute;
   overflow: hidden;
-  transition: transform 0.25s ease;
+  transition: left 0.5s cubic-bezier(0.22, 0.9, 0.3, 1), top 0.5s cubic-bezier(0.22, 0.9, 0.3, 1),
+    width 0.5s cubic-bezier(0.22, 0.9, 0.3, 1), height 0.5s cubic-bezier(0.22, 0.9, 0.3, 1),
+    border-radius 0.5s ease, box-shadow 0.4s ease;
 }
 .misc-photo--circle {
   border-radius: 50%;
@@ -32,9 +34,25 @@
   position: absolute;
   object-fit: cover;
   max-width: none;
+  transition: left 0.5s cubic-bezier(0.22, 0.9, 0.3, 1), top 0.5s cubic-bezier(0.22, 0.9, 0.3, 1),
+    width 0.5s cubic-bezier(0.22, 0.9, 0.3, 1), height 0.5s cubic-bezier(0.22, 0.9, 0.3, 1);
 }
+/* hover: the crop window grows out to the photo's full box, and the photo
+   slides back to fill it — so the whole uncropped picture is revealed */
 .misc-photo:hover {
-  transform: scale(1.04);
+  left: var(--full-l) !important;
+  top: var(--full-t) !important;
+  width: var(--full-w) !important;
+  height: var(--full-h) !important;
+  border-radius: 0;
+  z-index: 5;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
+}
+.misc-photo:hover img {
+  left: var(--imgh-l) !important;
+  top: var(--imgh-t) !important;
+  width: var(--imgh-w) !important;
+  height: var(--imgh-h) !important;
 }
 
 .misc-title {
@@ -52,9 +70,47 @@
 .misc-list {
   position: absolute;
   color: var(--brown);
-  font-size: clamp(16px, 2.6vw, 25px);
+  font-size: clamp(14px, 2.3vw, 22px);
   line-height: 1.19;
 }
 .misc-list {
   width: 28%;
+}
+
+/* ---------- page header: dark green wordmark + hero nav beneath it ---------- */
+/* the collage is pulled up underneath this, so keep the nav on top + clickable */
+.misc-header {
+  position: relative;
+  z-index: 2;
+  padding: 30px 0 24px;
+}
+/* the wordmark SVG is olive; mask it so the fill is exactly dark green */
+.misc-wordmark {
+  display: block;
+  width: 100%;
+  max-width: 1315px;
+  aspect-ratio: 1315 / 83;
+  background-color: #152712;
+  -webkit-mask: var(--wm) center / contain no-repeat;
+  mask: var(--wm) center / contain no-repeat;
+}
+/* same treatment as the home hero nav */
+.misc-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 26px;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.6;
+  color: #000000;
+}
+.misc-nav a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.misc-nav a:hover {
+  color: #717b08;
 }
