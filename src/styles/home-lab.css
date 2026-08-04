@@ -48,7 +48,8 @@
   width: 100vw;
   margin-left: calc(50% - 50vw);
   /* match the converted grid: 91 rows x 1.05 line-height */
-  height: calc(95.55 * max(0.5556vw, 7px));
+  /* exact art height, measured by AsciiGarden (falls back to the ratio) */
+  height: var(--ag-h, calc(95.55 * max(0.5556vw, 7px)));
   margin-top: 0;
   background-color: #06190a;
   overflow: hidden;
@@ -505,7 +506,7 @@
   margin-left: calc(50% - 50vw);
   /* sized so the gap under the "Pari Gill" ink is 60px (at the 1512 frame):
      the wordmark's visual bottom lands at 57.68vw, + 3.968vw (60px) */
-  height: 61.65vw;
+  height: 54.507vw;
   margin-top: 20px; /* 20px of whitespace at the top of the page */
   background: #ffffff;
   overflow: hidden;
@@ -518,7 +519,7 @@
 /* nav — IBM Plex Mono 400, 12px, 19.2px line-height */
 .lab-hero-nav {
   left: 6.349vw;  /* 96px */
-  top: 8.135vw;   /* 123px (73 + 50) */
+  top: 0.992vw;   /* 123px (73 + 50) */
   display: flex;
   flex-direction: column;
   font-family: 'IBM Plex Mono', ui-monospace, monospace;
@@ -539,7 +540,7 @@
 /* "AVAIBLE FOR FREELANCE" — Figtree 400, 11px / 0.9em */
 .lab-hero-available {
   left: 81.878vw; /* 1238px */
-  top: 9.458vw;   /* 143px (93 + 50) */
+  top: 2.315vw;   /* 143px (93 + 50) */
   width: 10.119vw; /* 153px */
   font-family: 'Figtree', system-ui, sans-serif;
   font-weight: 400;
@@ -551,7 +552,7 @@
 /* tagline — Figtree 400, 12px / 0.9em */
 .lab-hero-tagline {
   left: 17.527vw; /* 265px */
-  top: 26.852vw;  /* 406px */
+  top: 19.709vw;  /* 406px */
   width: 10.119vw; /* 153px */
   font-family: 'Figtree', system-ui, sans-serif;
   font-weight: 400;
@@ -563,7 +564,7 @@
 /* wordmark — Instrument Serif 400, 512.2px, #152712 */
 .lab-hero-wordmark {
   left: 3.505vw;  /* 53px */
-  top: 28.902vw;  /* 437px */
+  top: 21.759vw;  /* 437px */
   font-family: 'Instrument Serif', Georgia, serif;
   font-weight: 400;
   font-size: 33.875vw; /* 512.195px */
@@ -575,7 +576,7 @@
 /* bio — Figtree 400, 19px / 1.1em */
 .lab-hero-bio {
   left: 50.066vw; /* 757px */
-  top: 26.852vw;  /* 406px (was 461, moved up 55) */
+  top: 19.709vw;  /* 406px (was 461, moved up 55) */
   width: 29.63vw; /* 448px */
   font-family: 'Figtree', system-ui, sans-serif;
   font-weight: 400;
@@ -588,7 +589,7 @@
 /* ASCII critter — Figtree regular, 16px, olive */
 .lab-hero-critter {
   left: 4.563vw;  /* 69px (shifted over 15) */
-  top: 28.902vw;  /* 437px */
+  top: 21.759vw;  /* 437px */
   font-family: 'Figtree', system-ui, sans-serif;
   font-weight: 400;
   font-size: 1.058vw; /* 16px */

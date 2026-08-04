@@ -42,7 +42,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  height: calc(95.55 * max(0.5556vw, 7px)); /* the garden grid's natural height */
+  height: var(--ag-h, calc(95.55 * max(0.5556vw, 7px))); /* exact art height, measured by AsciiGarden */
   z-index: 0;
   pointer-events: none;
 }
