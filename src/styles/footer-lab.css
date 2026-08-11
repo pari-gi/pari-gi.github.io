@@ -12,16 +12,20 @@
   position: absolute;
   margin: 0;
 }
-/* olive quote — IBM Plex Mono Bold 24px (2x), uppercase */
+/* olive quote — Instrument Serif, same face as the "Pari Gill" wordmark */
 .lab2-foot-quote {
   left: 10.45vw; /* 158px */
   top: 2.38vw;   /* 36px */
-  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-family: 'Instrument Serif', Georgia, serif;
   font-weight: 700;
-  font-size: 14px;
-  line-height: 1.35;
-  text-transform: uppercase;
-  color: #717b08;
+  font-size: 21px;
+  line-height: 1.05;
+  letter-spacing: 0.01em;
+  /* Instrument Serif is a tall, narrow display face — squash it slightly so
+     it doesn't read as stretched at this size */
+  transform: scaleY(0.9);
+  transform-origin: left top;
+  color: #152712;
   white-space: pre-line;
 }
 /* orange ASCII cat — chases the mouse with a long lag so it visibly trails */

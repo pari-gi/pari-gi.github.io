@@ -144,7 +144,7 @@ export default function FooterLab({ onCursorEnter, onCursorLeave }) {
       <div className="lab2-foot-menu">
         <p className="lab2-foot-col-title">[MENU]</p>
         <Link to="/">WORK</Link>
-        <Link to="/miscellany">ME!</Link>
+        <Link to="/me">ME!</Link>
         <Link to="/miscellany">MISCELLANY</Link>
       </div>
       <div className="lab2-foot-contact">

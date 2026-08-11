@@ -1,0 +1,95 @@
+/* ============================================================
+   Me page — Figma "Me" (28:791), a 1514x1196 frame.
+   Everything is absolutely placed at the Figma coordinates,
+   converted to vw so the composition scales as one piece.
+   ============================================================ */
+.me-frame {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  height: 73.052vw; /* 1106px — 90px pulled out above the content */
+  margin-bottom: 200px; /* white space before the footer */
+  background: #ffffff;
+}
+.me-frame > * {
+  position: absolute;
+  margin: 0;
+}
+
+/* wordmark — masked so the fill is exactly dark green (see miscellany.css) */
+.me-wordmark-link {
+  left: 6.605vw; /* 100px */
+  top: 2.708vw;  /* 41px */
+  width: 86.856vw; /* 1315px */
+  display: block;
+}
+.me-wordmark {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1315 / 83;
+  background-color: #152712;
+  -webkit-mask: url('../assets/svg/wordmark.svg') center / contain no-repeat;
+  mask: url('../assets/svg/wordmark.svg') center / contain no-repeat;
+}
+
+/* nav — IBM Plex Mono 12/16, stacked under the wordmark */
+.me-nav {
+  left: 6.605vw; /* 100px */
+  top: 9.973vw;  /* 151px */
+  display: flex;
+  flex-direction: column;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: #000000;
+}
+.me-nav a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.me-nav a:hover {
+  color: #717b08;
+}
+
+/* the role stack — all left-aligned at x=401. Each line carries its own
+   colour in --c: it shows on load, fades to a muted grey-green once the page
+   settles, and comes back on hover. */
+.me-role {
+  left: 26.486vw; /* 401px */
+  white-space: nowrap;
+  color: var(--c);
+  transition: color 1.2s ease;
+}
+.me-frame.is-settled .me-role {
+  color: #c1c5bc;
+}
+.me-frame.is-settled .me-role:hover {
+  color: var(--c);
+  transition: color 0.25s ease;
+}
+.me-role--upper {
+  text-transform: uppercase;
+}
+/* Iowan Old Style is a macOS system face; Ibarra Real Nova is the closest
+   old-style serif already loaded here, so the web falls back to it */
+.me-role--serif {
+  font-family: 'Iowan Old Style', 'Ibarra Real Nova', Georgia, serif;
+  font-weight: 700;
+}
+.me-role--sans {
+  font-family: 'Istok Web', system-ui, sans-serif;
+  font-weight: 700;
+}
+.me-role--mono {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-weight: 400;
+}
+
+@media (max-width: 900px) {
+  .me-role {
+    white-space: normal;
+    right: 6.605vw;
+  }
+}

@@ -67,7 +67,7 @@ export default function Miscellany() {
         </Link>
         <nav className="misc-nav">
           <Link to="/">WORK</Link>
-          <Link to="/miscellany">ME</Link>
+          <Link to="/me">ME</Link>
           <a href="/resume.pdf">RESUME</a>
           <a href="https://www.linkedin.com/in/pari-gill/">LINKEDIN</a>
           <Link to="/miscellany">MISCELLANY</Link>
