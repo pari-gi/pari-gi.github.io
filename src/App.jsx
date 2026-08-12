@@ -5,6 +5,7 @@ import ScrollManager from './components/ScrollManager.jsx'
 import Landing from './pages/Landing.jsx'
 import Miscellany from './pages/Miscellany.jsx'
 import Me from './pages/Me.jsx'
+import Me2 from './pages/Me2.jsx'
 import CaseStudy from './pages/CaseStudy.jsx'
 import HomeLab from './pages/HomeLab.jsx'
 import HomeLab2 from './pages/HomeLab2.jsx'
@@ -29,6 +30,7 @@ export default function App() {
         <Route path="/pits" element={<CaseStudyLab slug="pits" />} />
         <Route path="/hungie" element={<CaseStudyLab slug="hungie" />} />
         <Route path="/me" element={<Me />} />
+        <Route path="/me2" element={<Me2 />} />
         <Route path="/miscellany" element={<Miscellany />} />
         {/* aliases from the sandbox era */}
         <Route path="/home-lab2" element={<HomeLab2 />} />

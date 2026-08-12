@@ -1,0 +1,215 @@
+/* ============================================================
+   Me — alternate layout (/me2). Label + heading on the left,
+   ruled experience rows on the right. Uses the site's own type:
+   IBM Plex Mono for the label/rows, the case-study heading face
+   for the title, Figtree grey for the company.
+   ============================================================ */
+.me2-header {
+  padding: 30px 0 0;
+}
+/* wordmark — masked so the fill is exactly dark green */
+.me2-wordmark {
+  display: block;
+  width: 100%;
+  max-width: 1315px;
+  aspect-ratio: 1315 / 83;
+  background-color: #152712;
+  -webkit-mask: url('../assets/svg/wordmark.svg') center / contain no-repeat;
+  mask: url('../assets/svg/wordmark.svg') center / contain no-repeat;
+}
+.me2-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 26px;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.6;
+  color: #000000;
+}
+.me2-nav a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.me2-nav a:hover {
+  color: #717b08;
+}
+
+/* title + photo on the left, the list on the right, 60px under the wordmark */
+.me2-body {
+  display: grid;
+  grid-template-columns: 34% 1fr;
+  gap: 6%;
+  align-items: stretch;
+  padding: 60px 0 200px;
+}
+/* pull the list column 60px left of the grid track */
+.me2-list {
+  margin-left: -60px;
+}
+/* page title, top-left */
+.me2-title {
+  display: block;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #152712;
+}
+.me2-subtitle {
+  display: block;
+  font-weight: 400;
+  color: #b8b8b8;
+}
+/* left column: title at the top, portrait pinned to the bottom so it ends
+   level with the last row of the chart */
+.me2-left {
+  display: flex;
+  flex-direction: column;
+}
+.me2-left .ascii-reveal {
+  margin-top: auto;
+  margin-bottom: var(--photo-offset, 0px);
+  width: 300px;
+  height: 400px;
+}
+/* (unused) old section label */
+.me2-label {
+  display: none;
+  margin-top: 30px;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.65;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #969696;
+}
+/* (unused) old page heading */
+.me2-heading {
+  display: none;
+  margin-top: -6px;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-weight: 700;
+  font-size: 34.5px; /* 0.75x */
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: #152712;
+  white-space: pre-line;
+}
+
+.me2-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+/* each row: role + company on the left, year on the right, hairline ruled */
+.me2-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 80px; /* air between the company and the year */
+  padding: 20px 0 18px;
+  border-bottom: 1px solid #d9d9d9;
+}
+.me2-row:first-child {
+  padding-top: 0;
+}
+.me2-role {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 12px; /* same as the nav */
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  min-width: 0;
+}
+.me2-role-title {
+  font-weight: 400;
+  color: #152712;
+}
+.me2-org {
+  font-weight: 400;
+  color: #b8b8b8;
+}
+.me2-year {
+  flex: none;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-weight: 400;
+  font-size: 12px; /* same as the nav */
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #b8b8b8;
+}
+
+@media (max-width: 900px) {
+  .me2-body {
+    grid-template-columns: 1fr;
+    gap: 50px;
+    padding: 80px 0 120px;
+  }
+  .me2-heading {
+    font-size: 34px;
+  }
+  .me2-row {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+}
+
+/* footer, only on this page: off-white and no top rule */
+.me2-page .lab2-footer {
+  background: #f8f8f8;
+  border-top: none;
+}
+
+/* ---------- ASCII portrait ----------
+   Hovering opens a soft circular hole in the ASCII at the pointer, so the
+   photo shows through there. --r is registered below so it can be animated. */
+@property --r {
+  syntax: '<length>';
+  inherits: false;
+  initial-value: 0px;
+}
+.ascii-reveal {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  background: #ffffff;
+}
+.ascii-reveal img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.ascii-reveal-art {
+  --r: 0px;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-mask-image: radial-gradient(
+    circle at var(--mx, 50%) var(--my, 50%),
+    transparent 0,
+    transparent var(--r),
+    #000 calc(var(--r) + 20px)
+  );
+  mask-image: radial-gradient(
+    circle at var(--mx, 50%) var(--my, 50%),
+    transparent 0,
+    transparent var(--r),
+    #000 calc(var(--r) + 20px)
+  );
+  transition: --r 0.7s cubic-bezier(0.33, 0, 0.2, 1);
+}
+.ascii-reveal:hover .ascii-reveal-art {
+  --r: 65px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ascii-reveal-art { transition: none; }
+}
