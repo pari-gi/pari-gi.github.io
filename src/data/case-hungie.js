@@ -8,7 +8,7 @@ import directionGame from '../assets/photos/image_140__651b541c.jpg'
 export default {
   slug: 'hungie',
   name: 'Hungie',
-  role: 'freelance Product designer',
+  role: 'AI Start Up | Freelance Product Designer',
   heroImage: iterationScreens1,
   heroHighlights: [
     'New brand identity.',

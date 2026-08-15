@@ -7,21 +7,26 @@
 .me2-header {
   padding: 30px 0 0;
 }
-/* wordmark — masked so the fill is exactly dark green */
+/* wordmark — masked so the fill is exactly dark green. Full-bleed and
+   squashed 40px shorter than its natural ratio, so the mask stretches
+   (100% 100%) rather than preserving aspect. */
 .me2-wordmark {
   display: block;
-  width: 100%;
-  max-width: 1315px;
-  aspect-ratio: 1315 / 83;
+  width: calc(100vw - 40px); /* 20px in from each edge of the page */
+  margin-left: calc(50% - 50vw + 20px);
+  height: calc((100vw - 40px) * 83 / 1315 - 40px);
   background-color: #152712;
-  -webkit-mask: url('../assets/svg/wordmark.svg') center / contain no-repeat;
-  mask: url('../assets/svg/wordmark.svg') center / contain no-repeat;
+  /* this copy carries preserveAspectRatio="none"; the normal wordmark would
+     letterbox itself inside the box instead of stretching to fill it */
+  -webkit-mask: url('../assets/svg/wordmark-stretch.svg') center / 100% 100% no-repeat;
+  mask: url('../assets/svg/wordmark-stretch.svg') center / 100% 100% no-repeat;
 }
 .me2-nav {
+  /* 100px from the page's left edge, whatever the centred column is doing */
+  margin-left: calc(100px - max(0px, (100vw - var(--page-max)) / 2));
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-top: 26px;
   font-family: 'IBM Plex Mono', ui-monospace, monospace;
   font-weight: 400;
   font-size: 12px;
@@ -43,11 +48,7 @@
   grid-template-columns: 34% 1fr;
   gap: 6%;
   align-items: stretch;
-  padding: 60px 0 200px;
-}
-/* pull the list column 60px left of the grid track */
-.me2-list {
-  margin-left: -60px;
+  padding: 40px 0 200px; /* nav sits 40px below the wordmark */
 }
 /* page title, top-left */
 .me2-title {
@@ -65,17 +66,22 @@
   font-weight: 400;
   color: #b8b8b8;
 }
-/* left column: title at the top, portrait pinned to the bottom so it ends
-   level with the last row of the chart */
+/* left column: nav, then the portrait centred in the column with the title
+   sitting directly beneath it */
 .me2-left {
   display: flex;
   flex-direction: column;
 }
-.me2-left .ascii-reveal {
-  margin-top: auto;
-  margin-bottom: var(--photo-offset, 0px);
+.me2-portrait {
+  width: 300px;
+  margin: 30px auto 0;
+}
+.me2-portrait .ascii-reveal {
   width: 300px;
   height: 400px;
+}
+.me2-portrait .me2-title {
+  margin-top: 22px;
 }
 /* (unused) old section label */
 .me2-label {
@@ -105,7 +111,9 @@
 
 .me2-list {
   list-style: none;
-  margin: 0;
+  width: 700px; /* 20px narrower */
+  /* no left pull now, so there is more air between the portrait and the chart */
+  margin: 80px 0 0;
   padding: 0;
 }
 /* each row: role + company on the left, year on the right, hairline ruled */
@@ -114,8 +122,8 @@
   align-items: baseline;
   justify-content: space-between;
   gap: 80px; /* air between the company and the year */
-  padding: 20px 0 18px;
-  border-bottom: 1px solid #d9d9d9;
+  padding: 10px 0; /* 40px from one rule to the next */
+  border-bottom: 0.75px solid #152712; /* same green as the titles */
 }
 .me2-row:first-child {
   padding-top: 0;
@@ -205,10 +213,12 @@
     transparent var(--r),
     #000 calc(var(--r) + 20px)
   );
-  transition: --r 0.7s cubic-bezier(0.33, 0, 0.2, 1);
+  transition: --r 4.2s cubic-bezier(0.33, 0, 0.2, 1);
 }
 .ascii-reveal:hover .ascii-reveal-art {
-  --r: 65px;
+  /* grows past the far corner (300x400 -> 500px diagonal) so the circle
+     opens out from the pointer until the whole photo is uncovered */
+  --r: 540px;
 }
 @media (prefers-reduced-motion: reduce) {
   .ascii-reveal-art { transition: none; }

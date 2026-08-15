@@ -143,9 +143,9 @@ export default function FooterLab({ onCursorEnter, onCursorLeave }) {
       <pre className="lab2-foot-cat" ref={catRef} aria-hidden="true">{FOOTER_CAT}</pre>
       <div className="lab2-foot-menu">
         <p className="lab2-foot-col-title">[MENU]</p>
-        <Link to="/">WORK</Link>
+        <Link to="/">WORKS</Link>
+        <Link to="/history">HISTORY</Link>
         <Link to="/me">ME!</Link>
-        <Link to="/miscellany">MISCELLANY</Link>
       </div>
       <div className="lab2-foot-contact">
         <p className="lab2-foot-col-title">[CONTACT]</p>

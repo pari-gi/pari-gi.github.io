@@ -1,13 +1,13 @@
-// Me — alternate layout (route: /me2). Two columns: a section label + heading
-// on the left, and the experience list on the right, one row per role:
-// TITLE (dark green), Company (grey), and the year (dark green), hairline ruled.
-import { useState, useEffect, useRef } from 'react'
+// History (route: /history) — the experience chart. Left column carries the
+// nav, the ASCII portrait and the title; right column lists each role as
+// TITLE (dark green), Company (grey) and the year, hairline ruled.
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import CustomCursor from '../components/CustomCursor.jsx'
 import FooterLab from '../components/FooterLab.jsx'
 import AsciiReveal from '../components/AsciiReveal.jsx'
 import headshot from '../assets/photos/headshot3_1__37f054d4.jpg'
-import '../styles/me2.css'
+import '../styles/history.css'
 
 const EXPERIENCE = [
   { title: 'Product Designer', org: 'Hungie', year: 'PRESENT' },
@@ -26,28 +26,8 @@ const EXPERIENCE = [
   { title: 'MIT Beaver Works Summer Institute', org: 'Cyber Security in Software Systems', year: '2020' },
 ]
 
-// the portrait's bottom lines up with this row rather than the end of the list
-const PHOTO_ALIGN_ROW = EXPERIENCE.findIndex((e) => e.title === 'Sister')
-
-export default function Me2() {
+export default function History() {
   const [cursorMode, setCursorMode] = useState('default')
-  const listRef = useRef(null)
-  const leftRef = useRef(null)
-  useEffect(() => {
-    const list = listRef.current
-    const left = leftRef.current
-    if (!list || !left) return
-    const align = () => {
-      const row = list.querySelectorAll('.me2-row')[PHOTO_ALIGN_ROW]
-      if (!row) return
-      const offset = list.getBoundingClientRect().bottom - row.getBoundingClientRect().bottom
-      left.style.setProperty('--photo-offset', `${Math.max(0, offset)}px`)
-    }
-    align()
-    const ro = new ResizeObserver(align)
-    ro.observe(list)
-    return () => ro.disconnect()
-  }, [])
   return (
     <main className="me2-page has-cursor">
       <CustomCursor mode={cursorMode} />
@@ -59,15 +39,24 @@ export default function Me2() {
       </header>
 
       <section className="me2-body">
-        <div className="me2-left" ref={leftRef}>
-          <h1 className="me2-title">
-            Product Designer + Engineer
-            <span className="me2-subtitle">+ side quester</span>
-          </h1>
-          <AsciiReveal src={headshot} alt="Pari Gill" />
+        <div className="me2-left">
+          <nav className="me2-nav">
+            <Link to="/">WORKS</Link>
+            <Link to="/history">HISTORY</Link>
+            <Link to="/me">ME</Link>
+            <a href="/resume.pdf">RESUME</a>
+            <a href="https://www.linkedin.com/in/pari-gill/">LINKEDIN</a>
+          </nav>
+          <div className="me2-portrait">
+            <AsciiReveal src={headshot} alt="Pari Gill" />
+            <h1 className="me2-title">
+              Product Designer + Engineer
+              <span className="me2-subtitle">+ side quester</span>
+            </h1>
+          </div>
         </div>
 
-        <ul className="me2-list" ref={listRef}>
+        <ul className="me2-list">
           {EXPERIENCE.map((e, i) => (
             <li className="me2-row" key={i}>
               <p className="me2-role">

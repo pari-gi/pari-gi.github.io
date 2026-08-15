@@ -1,4 +1,5 @@
-// The Me page (route: /me) — transcribed from Figma "Me" (node 28:791).
+// The earlier typographic take on this content (route: /archive/history) —
+// transcribed from Figma "Me" (node 28:791). Superseded by History.jsx.
 // A typographic stack of roles, each line with its own face, size and colour.
 // The frame is 1514px wide; every offset below is the Figma px converted to vw
 // so the whole composition scales the way the home hero does.
@@ -31,7 +32,7 @@ const ROLE_X = 401 // left edge of every line, per Figma
 const ROLE_W = 720 // and they all fill the same 720px box, so the right edges line up
 const vw = (px) => `${(px / FRAME) * 100}vw`
 
-export default function Me() {
+export default function HistoryArchive() {
   const [cursorMode, setCursorMode] = useState('default')
   // the roles land in their own colours, then settle to a muted grey-green;
   // hovering a line brings its colour back

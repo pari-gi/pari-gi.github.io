@@ -30,7 +30,7 @@
 /* ---------- hero ---------- */
 .lab-case-hero {
   position: relative;
-  height: 450px;
+  height: 350px; /* 100px shorter */
   background: #0a230d; /* same green as the home ASCII garden */
   overflow: hidden;
   padding: 28px 0 0;
@@ -50,26 +50,30 @@
   position: relative;
   z-index: 1;
 }
-/* role — L1 (Figtree), capitalized, under the title */
+/* role — L1 (Figtree), under the title; casing comes from the case data */
 .lab-case-role {
   font-family: 'Figtree', system-ui, sans-serif;
-  font-weight: 400;
+  font-weight: 700;
   font-size: 20px;
-  line-height: 1.2;
+  line-height: 1.35;
   letter-spacing: 0.01em;
-  text-transform: capitalize;
   color: #d7d4c6;
-  margin-top: 12px;
+  margin-top: 4px;
+  white-space: pre-line; /* the role can be written as multiple lines */
 }
+/* same geometry as .lab-case-content, so the hero title's left edge lines up
+   exactly with the body copy below it at every window width */
 .lab-case-hero-inner {
   display: block;
-  padding: 30px 0 0 5.4%;
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 30px 0 0 6%;
 }
 /* title — same face as the section headings (IBM Plex Mono), white, 1.5x */
 .lab-case-title {
   font-family: 'IBM Plex Mono', ui-monospace, monospace;
   font-weight: 700;
-  font-size: 51px; /* 1.5x the 34px section heading */
+  font-size: 51px; /* 1.5x the 32px section heading */
   line-height: 1.2;
   letter-spacing: 0.01em;
   text-transform: uppercase;
@@ -197,7 +201,12 @@
   gap: 8px;
   margin-top: 10px;
   padding: 2px 10px 2px 9px;
-  border-radius: 8px;
+  /* square corners, and only as wide as the longest nav label (measured in
+     CaseStudyLab); align-self stops the flex column stretching it */
+  border-radius: 0;
+  align-self: flex-start;
+  box-sizing: border-box;
+  width: var(--home-w, auto);
   background: #f5f5f5;
   font-family: 'IBM Plex Mono', ui-monospace, monospace;
   font-weight: 500;
@@ -303,7 +312,7 @@
 .lab-case-heading {
   font-family: 'IBM Plex Mono', ui-monospace, monospace;
   font-weight: 700;
-  font-size: 34px;
+  font-size: 32px;
   line-height: 1.2;
   letter-spacing: 0.01em;
   text-transform: uppercase;
@@ -578,4 +587,14 @@
   .lab-case-section-body {
     padding: 0;
   }
+}
+
+/* case studies: light grey footer, keeping the top rule */
+.lab-case .lab2-footer {
+  background: #f8f8f8;
+}
+
+/* case studies: bolder ASCII in the hero */
+.lab-case .ascii-garden {
+  font-weight: 700;
 }

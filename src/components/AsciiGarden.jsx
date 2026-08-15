@@ -13,17 +13,29 @@ import '../styles/ascii-garden.css'
 
 const LINE_HEIGHT = 1.05
 
-const ROWS = art.lines.map((runs, r) => (
-  <div className="ag-row" key={r}>
-    {runs.map((run, i) => (run.c ? <span key={i} style={{ color: run.c }}>{run.t}</span> : run.t))}
-  </div>
-))
+// rows are built once per variant: `doubleSpaces` widens every gap in the art,
+// which spreads the scene out into something sparser
+const ROWS_CACHE = {}
+function buildRows(doubleSpaces) {
+  const key = doubleSpaces ? 'wide' : 'normal'
+  if (!ROWS_CACHE[key]) {
+    ROWS_CACHE[key] = art.lines.map((runs, r) => (
+      <div className="ag-row" key={r}>
+        {runs.map((run, i) => {
+          const t = doubleSpaces ? run.t.replace(/ /g, '  ') : run.t
+          return run.c ? <span key={i} style={{ color: run.c }}>{t}</span> : t
+        })}
+      </div>
+    ))
+  }
+  return ROWS_CACHE[key]
+}
 
 // cover: fill the container's height as well as its width (used behind the
 // sticky work section, whose box is taller than the art). Any excess width is
 // cropped evenly from both sides. Without it the art only fits the width and
 // the container's own background shows through underneath.
-export default function AsciiGarden({ cover = false }) {
+export default function AsciiGarden({ cover = false, doubleSpaces = false, sizeOffset = 0 }) {
   const ref = useRef(null)
 
   useEffect(() => {
@@ -38,15 +50,24 @@ export default function AsciiGarden({ cover = false }) {
       const measured = row.scrollWidth
       if (!measured) return
       let size = (width / measured) * 100
+      // With doubled spaces the rows are longer, which would otherwise shrink
+      // the type to fit. Scale back up so the glyphs stay the size they'd be
+      // without doubling — the extra width simply overflows and gets clipped.
+      if (doubleSpaces) {
+        const chars = row.textContent.length
+        if (chars) size *= chars / art.cols
+      }
       if (cover) {
         // grow until the art also covers the container's height
         const heightAt100 = art.rows * LINE_HEIGHT * 100
         size = Math.max(size, (el.clientHeight / heightAt100) * 100)
       }
+      size = Math.max(1, size - sizeOffset)
       el.style.setProperty('--ag-fs', `${size}px`)
-      // centre the art when covering makes it wider than the container
+      // in cover mode centre the excess width; otherwise let it run off the
+      // right edge and be clipped by the container
       const overflow = Math.max(0, (measured * size) / 100 - width)
-      el.style.setProperty('--ag-shift', `${-overflow / 2}px`)
+      el.style.setProperty('--ag-shift', cover ? `${-overflow / 2}px` : '0px')
       // in cover mode the container sets its own height; don't drive it
       const host = cover ? null : el.parentElement
       if (host) host.style.setProperty('--ag-h', `${art.rows * LINE_HEIGHT * size}px`)
@@ -57,7 +78,7 @@ export default function AsciiGarden({ cover = false }) {
     const ro = new ResizeObserver(fit)
     ro.observe(el)
     return () => ro.disconnect()
-  }, [cover])
+  }, [cover, doubleSpaces, sizeOffset])
 
-  return <div className="ascii-garden" aria-hidden="true" ref={ref}>{ROWS}</div>
+  return <div className="ascii-garden" aria-hidden="true" ref={ref}>{buildRows(doubleSpaces)}</div>
 }

@@ -18,7 +18,7 @@ import iter4b from '../assets/photos/image_104__c4356759.jpg'
 export default {
   slug: 'pits',
   name: 'Princeton IT Services',
-  role: 'Product design intern',
+  role: 'Enterprise IT | Product Design Intern',
   heroImage: heroFinal,
   heroHighlights: [
     'New hero design.',

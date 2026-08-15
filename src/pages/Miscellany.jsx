@@ -66,11 +66,11 @@ export default function Miscellany() {
           <span className="misc-wordmark" />
         </Link>
         <nav className="misc-nav">
-          <Link to="/">WORK</Link>
+          <Link to="/">WORKS</Link>
+          <Link to="/history">HISTORY</Link>
           <Link to="/me">ME</Link>
           <a href="/resume.pdf">RESUME</a>
           <a href="https://www.linkedin.com/in/pari-gill/">LINKEDIN</a>
-          <Link to="/miscellany">MISCELLANY</Link>
         </nav>
       </header>
       <div className="misc-canvas">

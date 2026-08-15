@@ -118,11 +118,11 @@ export default function HomeLab2() {
 
       <section className="lab-hero">
         <nav className="lab-hero-nav">
-          <a href="#work">WORK</a>
+          <a href="#work">WORKS</a>
+          <Link to="/history">HISTORY</Link>
           <Link to="/me">ME</Link>
           <a href="/resume.pdf">RESUME</a>
           <a href="https://www.linkedin.com/in/pari-gill/">LINKEDIN</a>
-          <Link to="/miscellany">MISCELLANY</Link>
         </nav>
         <p className="lab-hero-available">AVAILABLE FOR FREELANCE</p>
         <p className="lab-hero-tagline">Great design turns information into experience</p>

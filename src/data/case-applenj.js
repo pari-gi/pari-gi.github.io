@@ -21,7 +21,7 @@ import moodboard from '../assets/photos/image_79__52d7735e.jpg'
 export default {
   slug: 'applenj',
   name: 'AppleNJ',
-  role: 'Product design intern',
+  role: 'Apple Reseller | Product Design Intern',
   heroImage: hero,
   heroHighlights: [
     'New product-service strategy.',

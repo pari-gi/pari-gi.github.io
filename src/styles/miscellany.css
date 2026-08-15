@@ -89,15 +89,18 @@
    data: URI, and those quotes/commas break CSS parsing inside a style attribute. */
 .misc-wordmark {
   display: block;
-  width: 100%;
-  max-width: 1315px;
-  aspect-ratio: 1315 / 83;
+  /* full-bleed to 20px from each edge and squashed, same as History */
+  width: calc(100vw - 40px);
+  margin-left: calc(50% - 50vw + 20px);
+  height: calc((100vw - 40px) * 83 / 1315 - 40px);
   background-color: #152712;
-  -webkit-mask: url('../assets/svg/wordmark.svg') center / contain no-repeat;
-  mask: url('../assets/svg/wordmark.svg') center / contain no-repeat;
+  -webkit-mask: url('../assets/svg/wordmark-stretch.svg') center / 100% 100% no-repeat;
+  mask: url('../assets/svg/wordmark-stretch.svg') center / 100% 100% no-repeat;
 }
 /* same treatment as the home hero nav */
 .misc-nav {
+  /* 100px from the page's left edge, whatever the centred column is doing */
+  margin-left: calc(100px - max(0px, (100vw - var(--page-max)) / 2));
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -115,4 +118,10 @@
 }
 .misc-nav a:hover {
   color: #717b08;
+}
+
+/* footer on this page: light grey with no top rule */
+.misc .lab2-footer {
+  background: #f8f8f8;
+  border-top: none;
 }

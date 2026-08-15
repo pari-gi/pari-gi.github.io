@@ -4,8 +4,8 @@ import Footer from './components/Footer.jsx'
 import ScrollManager from './components/ScrollManager.jsx'
 import Landing from './pages/Landing.jsx'
 import Miscellany from './pages/Miscellany.jsx'
-import Me from './pages/Me.jsx'
-import Me2 from './pages/Me2.jsx'
+import History from './pages/History.jsx'
+import HistoryArchive from './pages/HistoryArchive.jsx'
 import CaseStudy from './pages/CaseStudy.jsx'
 import HomeLab from './pages/HomeLab.jsx'
 import HomeLab2 from './pages/HomeLab2.jsx'
@@ -29,11 +29,12 @@ export default function App() {
         <Route path="/applenj" element={<CaseStudyLab slug="applenj" />} />
         <Route path="/pits" element={<CaseStudyLab slug="pits" />} />
         <Route path="/hungie" element={<CaseStudyLab slug="hungie" />} />
-        <Route path="/me" element={<Me />} />
-        <Route path="/me2" element={<Me2 />} />
-        <Route path="/miscellany" element={<Miscellany />} />
+        <Route path="/history" element={<History />} />
+        <Route path="/me" element={<Miscellany />} />
         {/* aliases from the sandbox era */}
         <Route path="/home-lab2" element={<HomeLab2 />} />
+        <Route path="/me2" element={<History />} />
+        <Route path="/miscellany" element={<Miscellany />} />
         <Route path="/applenj-lab" element={<CaseStudyLab slug="applenj" />} />
         <Route path="/pits-lab" element={<CaseStudyLab slug="pits" />} />
         <Route path="/hungie-lab" element={<CaseStudyLab slug="hungie" />} />
@@ -42,6 +43,7 @@ export default function App() {
         <Route path="/archive/applenj" element={<CaseStudy slug="applenj" />} />
         <Route path="/archive/pits" element={<CaseStudy slug="pits" />} />
         <Route path="/archive/hungie" element={<CaseStudy slug="hungie" />} />
+        <Route path="/archive/history" element={<HistoryArchive />} />
         <Route path="/home-lab" element={<HomeLab />} />
         <Route path="/styles" element={<StyleGuide />} />
         <Route path="*" element={<HomeLab2 />} />

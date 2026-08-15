@@ -231,6 +231,29 @@ export default function CaseStudyLab({ slug }) {
   const [active, setActive] = useState(0)
   const [cursorMode, setCursorMode] = useState('default')
 
+  // The Home pill ends where the longest nav label actually ends. Items wrap,
+  // so measure the widest rendered *line* (a Range gives one rect per line)
+  // rather than the widest element box, which is just the column width.
+  const navRef = useRef(null)
+  useEffect(() => {
+    const nav = navRef.current
+    if (!nav) return
+    const fit = () => {
+      let widest = 0
+      nav.querySelectorAll('.lab-case-nav-item').forEach((el) => {
+        const range = document.createRange()
+        range.selectNodeContents(el)
+        for (const rect of range.getClientRects()) widest = Math.max(widest, rect.width)
+      })
+      if (widest) nav.style.setProperty('--home-w', `${Math.ceil(widest)}px`)
+    }
+    fit()
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit)
+    const ro = new ResizeObserver(fit)
+    ro.observe(nav)
+    return () => ro.disconnect()
+  }, [data])
+
   // scroll-spy: highlight the section currently in view
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -252,11 +275,11 @@ export default function CaseStudyLab({ slug }) {
     document.getElementById(`s${i}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
 
   return (
-    <main className="lab-case has-cursor">
+    <main className={`lab-case has-cursor lab-case--${slug}`}>
       <CustomCursor mode={cursorMode} />
       <div className="lab-case-shell">
         <aside className="lab-case-nav">
-          <div className="lab-case-nav-inner">
+          <div className="lab-case-nav-inner" ref={navRef}>
             <Link to="/" className="lab-case-nav-home">
               <span aria-hidden="true">←</span> Home
             </Link>
@@ -278,11 +301,11 @@ export default function CaseStudyLab({ slug }) {
 
         <div className="lab-case-main">
           <nav className="lab-case-topnav">
-            <Link to="/">WORK</Link>
+            <Link to="/">WORKS</Link>
+            <Link to="/history">HISTORY</Link>
             <Link to="/me">ME</Link>
             <a href="/resume.pdf">RESUME</a>
             <a href="https://www.linkedin.com/in/pari-gill/">LINKEDIN</a>
-            <Link to="/miscellany">MISCELLANY</Link>
           </nav>
           <div className="lab-case-hero">
             <div className="lab-case-hero-bg" aria-hidden="true">

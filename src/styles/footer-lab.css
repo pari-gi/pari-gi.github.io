@@ -12,19 +12,15 @@
   position: absolute;
   margin: 0;
 }
-/* olive quote — Instrument Serif, same face as the "Pari Gill" wordmark */
+/* quote — same treatment as the footer's menu/contact links */
 .lab2-foot-quote {
   left: 10.45vw; /* 158px */
   top: 2.38vw;   /* 36px */
-  font-family: 'Instrument Serif', Georgia, serif;
-  font-weight: 700;
-  font-size: 21px;
-  line-height: 1.05;
-  letter-spacing: 0.01em;
-  /* Instrument Serif is a tall, narrow display face — squash it slightly so
-     it doesn't read as stretched at this size */
-  transform: scaleY(0.9);
-  transform-origin: left top;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.6;
+  text-transform: uppercase;
   color: #152712;
   white-space: pre-line;
 }

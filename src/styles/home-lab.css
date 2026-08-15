@@ -586,8 +586,17 @@
   white-space: pre-line;
 }
 
+/* the duck hops every 15s, same idea as the footer bunny */
+@keyframes duck-hop {
+  0%, 90%, 100% { transform: translateY(0); }
+  92% { transform: translateY(-10px); }
+  94% { transform: translateY(0); }
+  96% { transform: translateY(-6px); }
+  98% { transform: translateY(0); }
+}
 /* ASCII critter — Figtree regular, 16px, olive */
 .lab-hero-critter {
+  animation: duck-hop 15s ease-in-out infinite;
   left: 4.563vw;  /* 69px (shifted over 15) */
   top: 21.759vw;  /* 437px */
   font-family: 'Figtree', system-ui, sans-serif;
@@ -724,3 +733,7 @@
 .lab-work-brd--bottom { bottom: 0.6vw; left: 0.6vw; right: 0.6vw; }
 .lab-work-brd--left   { top: 0.6vw; bottom: 0.6vw; left: 0.6vw;  writing-mode: vertical-rl; }
 .lab-work-brd--right  { top: 0.6vw; bottom: 0.6vw; right: 0.6vw; writing-mode: vertical-rl; }
+
+@media (prefers-reduced-motion: reduce) {
+  .lab-hero-critter { animation: none; }
+}
