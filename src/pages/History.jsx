@@ -10,7 +10,7 @@ import headshot from '../assets/photos/headshot3_1__37f054d4.jpg'
 import '../styles/history.css'
 
 const EXPERIENCE = [
-  { title: 'Product Designer', org: 'Hungie', year: 'PRESENT' },
+  { title: 'Product Designer', org: 'Hungie', year: '2026' },
   { title: 'President', org: 'UMD Indian Student Association', year: 'PRESENT' },
   { title: 'Product Designer', org: 'National School Climate Center', year: '2026' },
   { title: 'Google UX Design Certificate', org: '', year: '' },

@@ -38,7 +38,7 @@ const CARDS = [
     slug: 'hungie',
     href: '/hungie-lab',
     label: 'HUNGIE',
-    role: 'SOLO PRODUCT DESIGNER (FREELANCE)',
+    role: 'PRODUCT DESIGNER (FREELANCE)',
     desc: 'Hungie was built around AI, but without users’ trust in it, the product’s value collapsed.\n\nI reshaped the product strategy and redesigned the experience to make the AI feel intelligent, personalized, and responsive rather than random — bringing the algorithm’s reasoning and adaptability from the back end to the front end so users could understand and trust the product.',
     pills: ['AI', 'BUSINESS REPOSITIONING'],
     images: [hungie1, hungie2, hungie3],

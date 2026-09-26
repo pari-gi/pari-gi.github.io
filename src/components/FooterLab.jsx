@@ -139,7 +139,7 @@ export default function FooterLab({ onCursorEnter, onCursorLeave }) {
         restCat()
       }}
     >
-      <p className="lab2-foot-quote">{'when life gives you lemons\nmake apple juice'}</p>
+      <p className="lab2-foot-quote">{'when life gives you lemons\nmake orange juice'}</p>
       <pre className="lab2-foot-cat" ref={catRef} aria-hidden="true">{FOOTER_CAT}</pre>
       <div className="lab2-foot-menu">
         <p className="lab2-foot-col-title">[MENU]</p>

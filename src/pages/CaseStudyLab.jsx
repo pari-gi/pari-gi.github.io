@@ -105,7 +105,8 @@ function OverviewGrid({ section }) {
               row.items.map(([a, b], j) => (
                 <p key={j} className="lab-case-ov-item">
                   <strong>{a}</strong>
-                  <span>{b}</span>
+                  {/* an empty sub-label would still take up a line */}
+                  {b && <span>{b}</span>}
                 </p>
               ))
             ) : (
@@ -205,6 +206,48 @@ function NavBunny() {
         ))}
       </div>
     </div>
+  )
+}
+
+// A small hint pinned to the bottom-left explaining the two-column rhythm:
+// left is the takeaway, right is the detail. It fades in a beat after load so
+// it reads as a pop-up, and once dismissed it stays gone for the whole visit
+// (sessionStorage) rather than nagging on every case study.
+const HINT_KEY = 'caseColumnHintDismissed'
+function ColumnHint() {
+  const [shown, setShown] = useState(false)
+  const [gone, setGone] = useState(false)
+  useEffect(() => {
+    try {
+      if (sessionStorage.getItem(HINT_KEY)) return
+    } catch {
+      /* private mode — just show it */
+    }
+    const t = setTimeout(() => setShown(true), 800)
+    return () => clearTimeout(t)
+  }, [])
+  if (!shown || gone) return null
+  const dismiss = () => {
+    try {
+      sessionStorage.setItem(HINT_KEY, '1')
+    } catch {
+      /* nothing to persist to; hiding for this page is enough */
+    }
+    setGone(true)
+  }
+  return (
+    <aside className="lab-case-hint">
+      <button type="button" className="lab-case-hint-x" onClick={dismiss} aria-label="Dismiss">
+        ×
+      </button>
+      <p className="lab-case-hint-title">How to read this page</p>
+      <p className="lab-case-hint-row">
+        <span className="lab-case-hint-col">Left</span>the overview
+      </p>
+      <p className="lab-case-hint-row">
+        <span className="lab-case-hint-col">Right</span>the in-depth
+      </p>
+    </aside>
   )
 }
 
@@ -327,6 +370,7 @@ export default function CaseStudyLab({ slug }) {
           </div>
         </div>
       </div>
+      <ColumnHint />
       <FooterLab
         onCursorEnter={() => setCursorMode('footer')}
         onCursorLeave={() => setCursorMode('default')}

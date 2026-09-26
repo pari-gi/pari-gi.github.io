@@ -28,8 +28,8 @@ export default {
         {
           eyebrow: 'Scope',
           items: [
-            ['Freelance Product Designer', 'Solo designer'],
-            ['6 Week Timeline', 'Start to finish'],
+            ['Product Designer', 'Freelance'],
+            ['10 Week Timeline', 'June – August 2026'],
             ['Full app', 'Mobile'],
           ],
         },
@@ -78,7 +78,7 @@ export default {
           pair: [
             {
               eyebrow: 'Challenges & Constraints',
-              body: 'Solo designer\n6 Week Timeline',
+              body: '10 Week Timeline',
             },
             {},
           ],
@@ -231,7 +231,7 @@ export default {
     {
       title: 'Testing & Validation',
       heading: 'Testing & Validation',
-      intro: 'unfortunately, this section is locked. please contact me for more info',
+      intro: 'More coming soon.',
       rows: [],
     },
   ],

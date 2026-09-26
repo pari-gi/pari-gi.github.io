@@ -31,7 +31,7 @@ const BIO =
 const CARDS = [
   {
     title: 'Hungie',
-    role: 'SOLO PRODUCT DESIGNER (FREELANCE)',
+    role: 'PRODUCT DESIGNER (FREELANCE)',
     href: '/hungie',
     banner: '#ff9800',
     image: hungieImg,
